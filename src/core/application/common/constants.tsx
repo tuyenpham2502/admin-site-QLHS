@@ -189,6 +189,13 @@ export default class Constant {
         )
     }
 
+    static Logger = class {
+        static DateTimeFormat = "yyyy-MM-DD HH:mm:ss.SSSS";
+        static DateFormat = "yyyy-MM-DD";
+    };
+
+
+
     static AuthErrorCodes = class {
         static UserNotFound = {
             code: AuthErrorCodes.USER_DELETED,

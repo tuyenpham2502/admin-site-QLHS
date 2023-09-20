@@ -10,7 +10,6 @@ import {
 import { Layout, Button, Row, Col, Avatar, Dropdown, } from 'antd';
 import type { MenuProps } from 'antd';
 import { InputText } from '@/infrastructure/common/components/controls/input';
-import { auth } from '@/infrastructure/services/firebase';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { BoldText } from '../components/controls/text';
