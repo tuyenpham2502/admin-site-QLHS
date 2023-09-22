@@ -1,5 +1,5 @@
 import {IDateTimeProvider} from "src/core/application/services/IDateTimeProvider";
-import Constants from "src/core/application/common/constants";
+import Constants from "@/core/application/common/Constants";
 import moment from "moment";
 
 export default class DateTimeProvider implements IDateTimeProvider {

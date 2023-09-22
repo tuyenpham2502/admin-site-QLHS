@@ -1,23 +1,31 @@
 //login page
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from 'styles/pages/account/sign-in.module.css'
 import { Input, Button, Row, Col } from 'antd';
 import { useRouter } from 'next/router';
-import { auth } from '@/infrastructure/services/firebase';
-import { signInWithFacebook } from 'src/infrastructure/identity/account/SignInWithFaceBook';
-import { signInWithEmail } from '@/infrastructure/identity/account/SignInWithEmail';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { NextSeo } from 'next-seo';
 import { validateEmail } from '@/infrastructure/helpers/validate';
 import { MessageError } from '@/infrastructure/common/components/controls/message-error';
 import { validateInputPassword } from '@/infrastructure/helpers/validate';
+import { getMyProfileAsync, signInWithEmailAsync } from '@/infrastructure/identity/account/effect/sigInWithEmail';
+import LocalStorageService from '@/infrastructure/services/LocalStorageService';
+import Constant from '@/core/application/common/Constants';
 
-
-const SignInPage = () => {
+const SignInPage = (context) => {
     const { t } = useTranslation('common');
     const router = useRouter();
+    let localStorage = new LocalStorageService();
+    let storage = localStorage.readStorage(Constant.API_TOKEN_STORAGE);
+
+    useEffect(() => {
+        if(storage?.token){
+            router.push('/');
+        }
+    }, [storage]);
+    
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -31,6 +39,8 @@ const SignInPage = () => {
         isError: false,
         message: ''
     });
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const oncChangeUserName = (e: any) => {
         setUser({
@@ -75,9 +85,12 @@ const SignInPage = () => {
         validateFields(!checkPassword, setErrorPassword, errorPassword, !checkPassword ? user.password ? "Mật khẩu không hợp lệ" : "Vui lòng nhập mật khẩu" : "");
     }
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = async (event: any) => {
         if (isValidateData()) {
-            signInWithEmail(user.email, user.password, router, t)
+            let res = await signInWithEmailAsync(user.email, user.password, context);
+            if(res && res.status == 200) {
+                await getMyProfileAsync(context, router, setIsLoading);
+            }
         }
     }
 

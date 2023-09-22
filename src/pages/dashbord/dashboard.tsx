@@ -4,21 +4,18 @@ import { useRouter } from 'next/router';
 import {MenuKeys} from "src/core/domain/enums/MenuKeys"
 
 
-const DashBoardPage = (context: any) => {
+const DashBoardPage = ({context}) => {
     const router = useRouter();
-    
-
-
     return <div>Dashbord</div>;
     };
 
 export default DashBoardPage;
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({locale}) {
     return {
         props: {
-            ...(await serverSideTranslations(context.locale)),
+            ...(await serverSideTranslations(locale, ['common'])),
             defaultSelectedKeys: [MenuKeys.Dashboard],
             openKeys: [],
         },

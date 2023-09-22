@@ -10,23 +10,54 @@ import {
 import { Layout, Button, Row, Col, Avatar, Dropdown, } from 'antd';
 import type { MenuProps } from 'antd';
 import { InputText } from '@/infrastructure/common/components/controls/input';
-import { signOut } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { BoldText } from '../components/controls/text';
 import styles from 'assets/styles/common/layout/Header.module.css'
 import Link from 'next/link';
+import { AccountManagementService } from '@/infrastructure/identity/account/service/AccountManagementService';
+import Endpoint from '@/core/application/common/Endpoint';
+
+const LogoutAsync = async (
+    context: any,
+    params: any,
+    router: NextRouter,
+    setIsLoading: Function,
+) => {
+    try {
+        let response = await new AccountManagementService().logoutAsync(
+            Endpoint.AccountManagement.logout,
+            {},
+            context
+        );
+        if (response.status == 200) {
+            router.push('/account/sign-in.html');
+        }
+
+    }
+    catch (error) {
+        throw error;
+    }
+
+}
+
+
+
+
+
+
 const Header = ({ context, translator, ...props }: any) => {
 
     const router = useRouter();
     const [textSearch, setTextSearch] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-
-    const handleSignOut = () => {
-        signOut(auth).then(() => {
-            router.push('/account/sign-in.html');
-        }).catch((error: any) => {
-            console.log(error);
-        });
+    const signOut = async () => {
+        await LogoutAsync(
+            context,
+            {},
+            router,
+            setIsLoading
+        )
     }
 
     const onChange = (e: any) => {
@@ -61,7 +92,7 @@ const Header = ({ context, translator, ...props }: any) => {
         {
             key: '3',
             label: (
-                <div onClick={handleSignOut}>
+                <div onClick={signOut}>
                     <BoldText>Sign Out</BoldText>
                 </div>
             ),
@@ -74,7 +105,7 @@ const Header = ({ context, translator, ...props }: any) => {
                 <Col span={16} className={styles.left_header_layout} >
                     <InputText placeholder="Search"
                         onBlur={onBlurSearch} onChange={onChange}
-                        bordered={false} 
+                        bordered={false}
                         size={"large"}
                         value={textSearch}
                         prefix={<SearchOutlined
@@ -82,7 +113,7 @@ const Header = ({ context, translator, ...props }: any) => {
                                 color: "#a3a3a3",
                                 fontSize: "22px"
                             }} />}
-                        />
+                    />
                 </Col>
                 <Col span={8} className={styles.right_header_layout} >
                     <div className={styles.icon_right_header}>

@@ -1,4 +1,4 @@
-import Constant from "@/core/application/common/constants"
+import Constant from "@/core/application/common/Constants"
 
 
 export const validateFields = (isImplicitChange = false, key, isCheck, setError, error, message) => {

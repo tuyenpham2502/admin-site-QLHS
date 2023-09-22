@@ -13,13 +13,13 @@ import iconSetting from 'assets/icons/icon-setting.png'
 import Menu from "@/core/application/common/models/LeftMenu/Menu";
 import MenuItem from "@/core/application/common/models/LeftMenu/MenuItem";
 import { MenuKeys } from "@/core/domain/enums/MenuKeys";
-import { AuthErrorCodes } from "firebase/auth";
 import type { NotificationPlacement } from 'antd/es/notification/interface';
 import GroupedMenuItem from "./models/LeftMenu/GroupedItem";
 
 
 
 export default class Constant {
+    static API_TOKEN_STORAGE: string = "API_TOKEN";
 
     static ToastMessage = class {
         static Notification = class {
@@ -194,22 +194,6 @@ export default class Constant {
         static DateFormat = "yyyy-MM-DD";
     };
 
-
-
-    static AuthErrorCodes = class {
-        static UserNotFound = {
-            code: AuthErrorCodes.USER_DELETED,
-            message: "User not found"
-        };
-        static InvalidPassword = {
-            code: AuthErrorCodes.INVALID_PASSWORD,
-            message: "Invalid password"
-        };
-        static UserDisable = {
-            code: AuthErrorCodes.USER_DISABLED,
-            message: "User disable"
-        };
-    }
 
 
 }
