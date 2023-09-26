@@ -1,7 +1,7 @@
 //login page
 
 import React, { useEffect, useState } from 'react';
-import styles from 'styles/pages/account/sign-in.module.css'
+import styles from 'assets/styles/pages/account/sign-in.module.css'
 import { Input, Button, Row, Col } from 'antd';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

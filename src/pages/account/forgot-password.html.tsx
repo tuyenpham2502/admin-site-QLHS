@@ -1,7 +1,7 @@
 //login page
 
 import React, { useState } from 'react';
-import styles from 'styles/pages/account/forgot-password.module.css'
+import styles from 'assets/styles/pages/account/forgot-password.module.css'
 import { Input, Button, Row, Col } from 'antd';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
