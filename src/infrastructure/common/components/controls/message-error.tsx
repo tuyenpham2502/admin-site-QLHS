@@ -1,6 +1,6 @@
 import { Typography } from 'antd';
 import React from 'react';
-import 'styles/common/components/controls/messageError.module.css'
+import 'styles/common/components/controls/MessageError.module.css'
 
 const { Text, Title, Link } = Typography;
 
