@@ -1,5 +1,5 @@
 import { setRecoilStateAsync } from './../common/libs/recoil-outside/Service';
-import Constants from 'src/core/application/common/Constants';
+import Constants from 'src/core/application/common/constants';
 import { IRequestService } from "src/core/application/services/IRequestService";
 import LoggerService from "src/infrastructure/services/LoggerService";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";

@@ -8,7 +8,7 @@ import LocalStorageService from "src/infrastructure/services/LocalStorageService
 import SuccessResponse from "src/core/application/dto/common/responses/SuccessResponse";
 import { Roles } from "src/core/domain/enums/Roles";
 import { setRecoilStateAsync } from "src/infrastructure/common/libs/recoil-outside/Service";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 import {
   ProfileState,
   RolesState,

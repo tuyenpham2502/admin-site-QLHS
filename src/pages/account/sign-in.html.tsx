@@ -12,7 +12,7 @@ import { MessageError } from 'src/infrastructure/common/components/controls/mess
 import { validateInputPassword } from 'src/infrastructure/helpers/validate';
 import { getMyProfileAsync, signInWithEmailAsync } from 'src/infrastructure/identity/account/effect/sigInWithEmail';
 import LocalStorageService from 'src/infrastructure/services/LocalStorageService';
-import Constant from 'src/core/application/common/Constants';
+import Constant from 'src/core/application/common/constants';
 
 const SignInPage = (context) => {
     const { t } = useTranslation('common');
