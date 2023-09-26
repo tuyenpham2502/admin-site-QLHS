@@ -1,16 +1,16 @@
 import { setRecoilStateAsync } from './../common/libs/recoil-outside/Service';
-import Constants from '@/core/application/common/Constants';
-import { IRequestService } from "@/core/application/services/IRequestService";
-import LoggerService from "@/infrastructure/services/LoggerService";
-import LocalStorageService from "@/infrastructure/services/LocalStorageService";
-import Cookie from "@/core/application/common/models/Cookie";
-import { RequestResponse } from '@/core/application/dto/common/responses/RequestResponse';
-import FailureResponse from '@/core/application/dto/common/responses/FailureResponse';
-import SuccessResponse from '@/core/application/dto/common/responses/SuccessResponse';
-import InvalidModelStateResponse from '@/core/application/dto/common/responses/InvalidModelStateResponse';
+import Constants from 'src/core/application/common/Constants';
+import { IRequestService } from "src/core/application/services/IRequestService";
+import LoggerService from "src/infrastructure/services/LoggerService";
+import LocalStorageService from "src/infrastructure/services/LocalStorageService";
+import Cookie from "src/core/application/common/models/Cookie";
+import { RequestResponse } from 'src/core/application/dto/common/responses/RequestResponse';
+import FailureResponse from 'src/core/application/dto/common/responses/FailureResponse';
+import SuccessResponse from 'src/core/application/dto/common/responses/SuccessResponse';
+import InvalidModelStateResponse from 'src/core/application/dto/common/responses/InvalidModelStateResponse';
 import axios, { AxiosResponse } from 'axios';
-import NetworkException from '@/core/application/common/exceptions/NetworkException';
-import { LoadingState } from '@/core/application/common/atoms/global/LoadingState';
+import NetworkException from 'src/core/application/common/exceptions/NetworkException';
+import { LoadingState } from 'src/core/application/common/atoms/global/LoadingState';
 
 
 export default class RequestService implements IRequestService {

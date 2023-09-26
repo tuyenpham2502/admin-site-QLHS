@@ -4,7 +4,7 @@ import { appWithTranslation } from 'next-i18next'
 import App from 'next/app'
 import { RecoilRoot } from 'recoil'
 import { DefaultSeo } from 'next-seo'
-import RecoilOutsideComponent from '@/infrastructure/common/libs/recoil-outside/Service'
+import RecoilOutsideComponent from 'src/infrastructure/common/libs/recoil-outside/Service'
 
 const QLHSSystemAdminApp = ({ Component, pageProps }) => {
   

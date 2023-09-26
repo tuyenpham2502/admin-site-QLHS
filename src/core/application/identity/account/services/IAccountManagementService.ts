@@ -1,5 +1,5 @@
-import Cookie from "@/core/application/common/models/Cookie";
-import { RequestResponse } from "@/core/application/dto/common/responses/RequestResponse";
+import Cookie from "src/core/application/common/models/Cookie";
+import { RequestResponse } from "src/core/application/dto/common/responses/RequestResponse";
 
 
 

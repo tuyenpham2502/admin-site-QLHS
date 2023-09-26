@@ -1,4 +1,4 @@
-import MainLayout from "@/infrastructure/common/layout/MainLayout";
+import MainLayout from "src/infrastructure/common/layout/MainLayout";
 
 
 export default function Custom404() {

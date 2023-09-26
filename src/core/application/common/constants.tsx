@@ -10,9 +10,9 @@ import iconTeacher from 'assets/icons/icon-teachers.png'
 import iconAccount from 'assets/icons/icon-account.png'
 import iconSubject from 'assets/icons/icon-subject.png'
 import iconSetting from 'assets/icons/icon-setting.png'
-import Menu from "@/core/application/common/models/LeftMenu/Menu";
-import MenuItem from "@/core/application/common/models/LeftMenu/MenuItem";
-import { MenuKeys } from "@/core/domain/enums/MenuKeys";
+import Menu from "src/core/application/common/models/LeftMenu/Menu";
+import MenuItem from "src/core/application/common/models/LeftMenu/MenuItem";
+import { MenuKeys } from "src/core/domain/enums/MenuKeys";
 import type { NotificationPlacement } from 'antd/es/notification/interface';
 import GroupedMenuItem from "./models/LeftMenu/GroupedItem";
 

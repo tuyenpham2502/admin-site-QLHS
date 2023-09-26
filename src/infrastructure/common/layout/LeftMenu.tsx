@@ -3,12 +3,12 @@ import logo from 'assets/images/logo.png'
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import Image from 'next/image'
-import { MenuUI, MenuItemUI, SubMenuUI } from "@/infrastructure/common/components/menu/menu";
-import { MenuSubKeys } from "@/core/domain/enums/MenuKeys";
-import MenuItem from "@/core/application/common/models/LeftMenu/MenuItem";
-import Constant from "@/core/application/common/Constants";
+import { MenuUI, MenuItemUI, SubMenuUI } from "src/infrastructure/common/components/menu/menu";
+import { MenuSubKeys } from "src/core/domain/enums/MenuKeys";
+import MenuItem from "src/core/application/common/models/LeftMenu/MenuItem";
+import Constant from "src/core/application/common/Constants";
 import styles from 'assets/styles/common/layout/LeftMenu.module.css'
-import GroupedMenuItem from "@/core/application/common/models/LeftMenu/GroupedItem";
+import GroupedMenuItem from "src/core/application/common/models/LeftMenu/GroupedItem";
 const LeftMenu = ({ context, translator }: any) => {
     const router = useRouter();
     const [openKeys, setOpenKeys] = useState(context?.openKeys);

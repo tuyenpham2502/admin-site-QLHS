@@ -7,12 +7,12 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { NextSeo } from 'next-seo';
-import { validateEmail } from '@/infrastructure/helpers/validate';
-import { MessageError } from '@/infrastructure/common/components/controls/message-error';
-import { validateInputPassword } from '@/infrastructure/helpers/validate';
-import { getMyProfileAsync, signInWithEmailAsync } from '@/infrastructure/identity/account/effect/sigInWithEmail';
-import LocalStorageService from '@/infrastructure/services/LocalStorageService';
-import Constant from '@/core/application/common/Constants';
+import { validateEmail } from 'src/infrastructure/helpers/validate';
+import { MessageError } from 'src/infrastructure/common/components/controls/message-error';
+import { validateInputPassword } from 'src/infrastructure/helpers/validate';
+import { getMyProfileAsync, signInWithEmailAsync } from 'src/infrastructure/identity/account/effect/sigInWithEmail';
+import LocalStorageService from 'src/infrastructure/services/LocalStorageService';
+import Constant from 'src/core/application/common/Constants';
 
 const SignInPage = (context) => {
     const { t } = useTranslation('common');

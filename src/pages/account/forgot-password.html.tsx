@@ -7,9 +7,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { NextSeo } from 'next-seo';
-import { validateEmail } from '@/infrastructure/helpers/validate';
-import { MessageError } from '@/infrastructure/common/components/controls/message-error';
-import { validateInputPassword } from '@/infrastructure/helpers/validate';
+import { validateEmail } from 'src/infrastructure/helpers/validate';
+import { MessageError } from 'src/infrastructure/common/components/controls/message-error';
+import { validateInputPassword } from 'src/infrastructure/helpers/validate';
 import { useSearchParams } from 'next/navigation';
 
 const ForgotPasswordPage = () => {

@@ -1,19 +1,19 @@
 import Endpoint from "src/core/application/common/Endpoint";
 import { AccountManagementService } from "./../service/AccountManagementService";
-import { SignInWithEmailRequest } from "@/core/application/dto/identity/account/request/signInWithEmail";
-import Cookie from "@/core/application/common/models/Cookie";
+import { SignInWithEmailRequest } from "src/core/application/dto/identity/account/request/signInWithEmail";
+import Cookie from "src/core/application/common/models/Cookie";
 import { NextRouter } from "next/router";
-import LoggerService from "@/infrastructure/services/LoggerService";
-import LocalStorageService from "@/infrastructure/services/LocalStorageService";
-import SuccessResponse from "@/core/application/dto/common/responses/SuccessResponse";
-import { Roles } from "@/core/domain/enums/Roles";
-import { setRecoilStateAsync } from "@/infrastructure/common/libs/recoil-outside/Service";
-import Constant from "@/core/application/common/Constants";
+import LoggerService from "src/infrastructure/services/LoggerService";
+import LocalStorageService from "src/infrastructure/services/LocalStorageService";
+import SuccessResponse from "src/core/application/dto/common/responses/SuccessResponse";
+import { Roles } from "src/core/domain/enums/Roles";
+import { setRecoilStateAsync } from "src/infrastructure/common/libs/recoil-outside/Service";
+import Constant from "src/core/application/common/Constants";
 import {
   ProfileState,
   RolesState,
   UserIdState,
-} from "@/core/application/common/atoms/identity/account/ProfileState";
+} from "src/core/application/common/atoms/identity/account/ProfileState";
 
 export const signInWithEmailAsync = async (
   email: string,

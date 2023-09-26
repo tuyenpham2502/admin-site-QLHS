@@ -9,13 +9,13 @@ import {
 } from '@ant-design/icons';
 import { Layout, Button, Row, Col, Avatar, Dropdown, } from 'antd';
 import type { MenuProps } from 'antd';
-import { InputText } from '@/infrastructure/common/components/controls/input';
+import { InputText } from 'src/infrastructure/common/components/controls/input';
 import { NextRouter, useRouter } from 'next/router';
 import { BoldText } from '../components/controls/text';
 import styles from 'assets/styles/common/layout/Header.module.css'
 import Link from 'next/link';
-import { AccountManagementService } from '@/infrastructure/identity/account/service/AccountManagementService';
-import Endpoint from '@/core/application/common/Endpoint';
+import { AccountManagementService } from 'src/infrastructure/identity/account/service/AccountManagementService';
+import Endpoint from 'src/core/application/common/Endpoint';
 
 const LogoutAsync = async (
     context: any,

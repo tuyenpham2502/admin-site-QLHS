@@ -4,17 +4,17 @@ import LeftMenu from "src/infrastructure/common/layout/LeftMenu";
 import Header from "src/infrastructure/common/layout/Header";
 import Content from "src/infrastructure/common/layout/Content";
 import styles from 'assets/styles/common/layout/MainLayout.module.css'
-import LocalStorageService from "@/infrastructure/services/LocalStorageService";
-import Constant from "@/core/application/common/Constants";
+import LocalStorageService from "src/infrastructure/services/LocalStorageService";
+import Constant from "src/core/application/common/Constants";
 import { NextRouter, useRouter } from "next/router";
 import { FullPageLoading } from "../components/controls/loading";
-import Cookie from "@/core/application/common/models/Cookie";
-import Endpoint from "@/core/application/common/Endpoint";
-import { AccountManagementService } from "@/infrastructure/identity/account/service/AccountManagementService";
-import { Roles } from "@/core/domain/enums/Roles";
-import { ProfileState, RolesState, UserIdState } from "@/core/application/common/atoms/identity/account/ProfileState";
+import Cookie from "src/core/application/common/models/Cookie";
+import Endpoint from "src/core/application/common/Endpoint";
+import { AccountManagementService } from "src/infrastructure/identity/account/service/AccountManagementService";
+import { Roles } from "src/core/domain/enums/Roles";
+import { ProfileState, RolesState, UserIdState } from "src/core/application/common/atoms/identity/account/ProfileState";
 import { RecoilState } from "recoil";
-import SuccessResponse from "@/core/application/dto/common/responses/SuccessResponse";
+import SuccessResponse from "src/core/application/dto/common/responses/SuccessResponse";
 import { setRecoilStateAsync } from "../libs/recoil-outside/Service";
 
 const getMyProfileAsync = async (
