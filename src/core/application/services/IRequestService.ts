@@ -22,7 +22,7 @@ export interface IRequestService {
 
     makeUploadRequestAsync(endpoint: string, file: File, context: Cookie ): Promise<RequestResponse>
 
-    makePutRequestAsync();
+    makePutRequestAsync(endpoint: string, file: File, context: Cookie ): Promise<RequestResponse>
 
     makeDeleteRequestAsync();
 }

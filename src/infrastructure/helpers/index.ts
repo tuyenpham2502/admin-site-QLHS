@@ -19,15 +19,5 @@ export const validateFields = (isImplicitChange = false, key, isCheck, setError,
 
 };
 
-export const AuthErrors = (error: string) => {
-    let authCodes = Constant.AuthErrorCodes;
-    switch (error) {
-        case authCodes.UserNotFound.code:
-            return authCodes.UserNotFound.message;
-        case authCodes.InvalidPassword.code:
-            return authCodes.InvalidPassword.message;
-        case authCodes.UserDisable.code:
-            return authCodes.UserDisable.message;
-    }
 
-};
+

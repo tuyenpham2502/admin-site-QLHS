@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import styles from 'styles/pages/account/forgot-password.module.css'
 import { Input, Button, Row, Col } from 'antd';
 import { useRouter } from 'next/router';
-import { auth } from '@/infrastructure/services/firebase';
-import { forgetPassword } from '@/infrastructure/identity/account/ForgetPassword';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { NextSeo } from 'next-seo';
@@ -63,11 +61,7 @@ const ForgotPasswordPage = () => {
 
     
 
-    const handleSubmit = (event: any) => {
-        if (isValidateData()) {
-            forgetPassword(user.email, router,t);
-        }
-    }
+    
 
     return (
         <>
@@ -79,11 +73,11 @@ const ForgotPasswordPage = () => {
                     <div className={styles.sign_in_wrapper}>
                         <div className={styles.form_sign_in}>
                             <Row className={styles.sign_in_input}>
-                                <Input placeholder="Enter your account" onChange={oncChangeUserName} onBlur={onBlurEmail} onPressEnter={handleSubmit} />
+                                <Input placeholder="Enter your account" onChange={oncChangeUserName} onBlur={onBlurEmail}  />
                                 <MessageError isError={errorEmail.isError} message={errorEmail.message} />
                             </Row>
                             <Row >
-                                <Button className={styles.button_sign_in} type="primary" onClick={handleSubmit}>SEND</Button>
+                                <Button className={styles.button_sign_in} type="primary">SEND</Button>
                             </Row>
                         </div>
 

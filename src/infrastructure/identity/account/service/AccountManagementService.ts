@@ -28,11 +28,12 @@ export class AccountManagementService implements IAccountManagementService {
             if(result.status == 201) {
                 return result as FailureResponse;
             }
-            if(result.status = 400) {
+            if(result.status == 400) {
                 return result as InvalidModelStateResponse;
             }
             throw new NetworkException('No http status code handler');
         } catch (e) {
+            this.loggerService.error(e);
             throw e;
         }
     }
@@ -43,11 +44,13 @@ export class AccountManagementService implements IAccountManagementService {
             if(result.status == 200) {
                 return result as SuccessResponse;
             }
-            if(result.status == 401) {
+            if(result.status == 201) {
                 return result as FailureResponse;
             }
             throw new NetworkException('No http status code handler');
         } catch (e) {
+            this.loggerService.error(e);
+            
             throw e;
         }
     }
@@ -59,11 +62,12 @@ export class AccountManagementService implements IAccountManagementService {
                 this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(false, "", ""));
                 return result as SuccessResponse;
             }
-            if(result.status == 401) {
+            if(result.status == 201) {
                 return result as FailureResponse;
             }
             throw new NetworkException('No http status code handler');
         } catch (e) {
+            this.loggerService.error(e);
             throw e;
         }
     }

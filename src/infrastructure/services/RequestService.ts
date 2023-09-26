@@ -70,6 +70,10 @@ export default class RequestService implements IRequestService {
             const _options = this.getOptions(context);
             return this.processRequest(await axios.get(_url, this.getOptions(context)));
         } catch (e) {
+            if(e.response?.status == 400 || e.response?.status == 401 || e.response.status == 500){
+                this.localStorageService.setStorage(Constants.API_TOKEN_STORAGE, new Cookie(false, "", ""));
+                
+            }
             // this.loggerService.error(e);
             return new FailureResponse(e.response?.errors || e.errors);
         }
@@ -82,7 +86,6 @@ export default class RequestService implements IRequestService {
         //const setIsLoading = useSetRecoilState(LoadingState);
         try {
             const _url = `${this.baseURL}/${endpoint}`;
-            console.log("url", _url);
             await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url })
             const _params = JSON.stringify(params);
             const _options = this.getOptions(context, false);
@@ -92,6 +95,11 @@ export default class RequestService implements IRequestService {
         } catch (e) {
             // this.loggerService.error(e);
             // throw e;
+
+            if(e.response?.status == 400 || e.response?.status == 401 || e.response.status == 500){
+                this.localStorageService.setStorage(Constants.API_TOKEN_STORAGE, new Cookie(false, "", ""));
+            }
+
             return new FailureResponse(e.response?.errors || e.errors);
         }
         finally {
@@ -137,8 +145,26 @@ export default class RequestService implements IRequestService {
         }
     }
 
-    makePutRequestAsync() {
+    async makePutRequestAsync(endpoint: string, params: any, context: Cookie): Promise<RequestResponse> {
+        //const setIsLoading = useSetRecoilState(LoadingState);
+        try {
+            const _url = `${this.baseURL}/${endpoint}`;
+            await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url })
+            const _params = JSON.stringify(params);
+            const _options = this.getOptions(context);
+            _options.headers["Content-Type"] = 'application/json';
+            return this.processRequest(await axios.put(_url, _params, this.getOptions(context)));
+        } catch (e) {
+            // this.loggerService.error(e);
+            // throw e;
+            let result = (e as Error).message;
+            return new FailureResponse(result || e.errors);
+        }
+        finally {
+            await setRecoilStateAsync(LoadingState, { isLoading: false, uri: '' })
+        }
     }
+
 
     makeDeleteRequestAsync() {
         axios.CancelToken.source().token

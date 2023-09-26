@@ -70,11 +70,20 @@ export const getMyProfileAsync = async (
         });
 
         router.push("/");
-      }
+        setTimeout(() => {
+        setLoading(false);
+      }, 300);
+    }
+    return response;
+    }
+    if(response.status == 401) {
+      localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(false, "", ""));
+      router.push("/account/sign-in.html");
       setTimeout(() => {
         setLoading(false);
       }, 300);
     }
+
   } catch (e) {
     throw e;
   }

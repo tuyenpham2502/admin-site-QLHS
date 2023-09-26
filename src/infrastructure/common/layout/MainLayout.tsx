@@ -6,10 +6,51 @@ import Content from "src/infrastructure/common/layout/Content";
 import styles from 'assets/styles/common/layout/MainLayout.module.css'
 import LocalStorageService from "@/infrastructure/services/LocalStorageService";
 import Constant from "@/core/application/common/Constants";
-import { useRouter } from "next/router";
-import { getMyProfileAsync } from "@/infrastructure/identity/account/effect/sigInWithEmail";
+import { NextRouter, useRouter } from "next/router";
+import { FullPageLoading } from "../components/controls/loading";
+import Cookie from "@/core/application/common/models/Cookie";
+import Endpoint from "@/core/application/common/Endpoint";
+import { AccountManagementService } from "@/infrastructure/identity/account/service/AccountManagementService";
+import { Roles } from "@/core/domain/enums/Roles";
+import { ProfileState, RolesState, UserIdState } from "@/core/application/common/atoms/identity/account/ProfileState";
+import { RecoilState } from "recoil";
+import SuccessResponse from "@/core/application/dto/common/responses/SuccessResponse";
+import { setRecoilStateAsync } from "../libs/recoil-outside/Service";
+
+const getMyProfileAsync = async (
+
+    cookie: Cookie,
+    // loggerService: LoggerService,
+    setLoading: Function
+) => {
+    let response = await new AccountManagementService().getMyProfileAsync(
+        Endpoint.AccountManagement.getMyProfile,
+        {},
+        cookie
+    );
+    if (response.status == 200) {
+        setRecoilStateAsync(ProfileState, {
+            data: (response as SuccessResponse)?.data.getMyProfile.user,
+        });
+        setRecoilStateAsync(UserIdState, {
+            data: (response as SuccessResponse)?.data.getMyProfile.user.userId,
+        });
+
+        setRecoilStateAsync(RolesState, {
+            data: (response as SuccessResponse)?.data.getMyProfile.user.role,
+        });
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 300);
+
+        return response;
+    };
+}
+
+
 const MainLayout = ({ context, translator, ...props }: any) => {
-    
+
     const router = useRouter();
     let localStorage = new LocalStorageService();
     let storage = localStorage.readStorage(Constant.API_TOKEN_STORAGE);
@@ -23,14 +64,19 @@ const MainLayout = ({ context, translator, ...props }: any) => {
     const getMyProfile = async () => {
         await getMyProfileAsync(
             context,
-            router,
             setIsLoading
         )
     }
 
     useEffect(() => {
-        getMyProfile
+        getMyProfile()
     }, []);
+
+    if (isLoading) {
+        return (
+            <FullPageLoading isLoading={isLoading} />
+        )
+    }
 
     return (
         <Layout className={styles.qlhs_main_layout}>
