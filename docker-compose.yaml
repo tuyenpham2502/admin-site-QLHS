@@ -8,13 +8,13 @@ services:
     restart: always
     command: ${command}
     ports:
-      - 8080:80
+      - 8080:8080
     build:
       context: ./
       dockerfile: Dockerfile
-    # networks:
-    #   default:
-    #     ipv4_address: 10.17.0.13
+    networks:
+      default:
+        ipv4_address: 10.17.0.13
 # Network
 # networks:
 #   default:
