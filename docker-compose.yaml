@@ -12,9 +12,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    networks:
-      default:
-        ipv4_address: 10.17.0.13
+    # networks:
+    #   default:
+    #     ipv4_address: 10.17.0.13
 # Network
 # networks:
 #   default:
