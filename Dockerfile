@@ -26,5 +26,5 @@ RUN yarn build
 
 RUN pwd
 RUN ls -la
-#CMD [ "yarn","start" ]
+CMD [ "yarn","start" ]
 

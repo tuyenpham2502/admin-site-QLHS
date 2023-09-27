@@ -2,10 +2,13 @@ version: '3.8'
 
 services:
   qlhs-frontend-admin:
+    stdin_open: true
     image: qlhs-frontend-admin
     container_name: qlhqlhs-frontend-admin
     restart: always
     command: ${command}
+    ports:
+      - 8080:80
     build:
       context: ./
       dockerfile: Dockerfile
