@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   qlhs-frontend-admin:
-    image: qlhs-frontend-admin:${version}
-    container_name: qlhs-frontend-${version}
+    image: qlhs-frontend-admin
+    container_name: qlhqlhs-frontend-admin
     restart: always
     command: ${command}
     build:
@@ -12,7 +12,7 @@ services:
     # networks:
     #   default:
     #     ipv4_address: 10.17.0.13
-## Network
+# Network
 # networks:
 #   default:
 #     external: true
