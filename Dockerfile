@@ -28,11 +28,4 @@ RUN pwd
 RUN ls -la
 # CMD [ "yarn","start" ]
 
-FROM nginx:stable-alpine
-COPY --from=build /usr/app/.next /usr/share/nginx/html
-RUN mkdir /usr/share/nginx/log
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/default.conf /etc/nginx/conf.d
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
 
