@@ -51,7 +51,7 @@ const Header = ({ context, translator, ...props }: any) => {
     const router = useRouter();
     const [textSearch, setTextSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const myProfileRef = useRecoilValue(ProfileState);
+    const myProfileRef = useRecoilValue<any>(ProfileState);
 
     const signOut = async () => {
         await LogoutAsync(
@@ -62,7 +62,6 @@ const Header = ({ context, translator, ...props }: any) => {
         )
     }
 
-    console.log(myProfileRef);
 
     const onChange = (e: any) => {
         setTextSearch(e.target.value);
