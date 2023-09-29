@@ -4,7 +4,7 @@ services:
   qlhs-frontend-admin:
     stdin_open: true
     image: qlhs-frontend-admin:${version}
-    container_name: qlhqlhs-frontend-admin:${version}
+    container_name: qlhs-frontend-admin-${version}
     restart: always
     command: ${command}
     ports:
