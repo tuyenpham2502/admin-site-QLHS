@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import logo from 'assets/images/logo.png'
+import logo from 'assets/images/logo.svg'
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import Image from 'next/image'
-import { MenuUI, MenuItemUI, SubMenuUI } from "@/infrastructure/common/components/menu/menu";
-import { MenuSubKeys } from "@/core/domain/enums/MenuKeys";
-import MenuItem from "@/core/application/common/models/LeftMenu/MenuItem";
-import Constant from "@/core/application/common/constants";
+import { MenuUI, MenuItemUI, SubMenuUI } from "src/infrastructure/common/components/menu/menu";
+import { MenuSubKeys } from "src/core/domain/enums/MenuKeys";
+import MenuItem from "src/core/application/common/models/LeftMenu/MenuItem";
+import Constant from "src/core/application/common/constants";
 import styles from 'assets/styles/common/layout/LeftMenu.module.css'
-import GroupedMenuItem from "@/core/application/common/models/LeftMenu/GroupedItem";
+import GroupedMenuItem from "src/core/application/common/models/LeftMenu/GroupedItem";
 const LeftMenu = ({ context, translator }: any) => {
     const router = useRouter();
     const [openKeys, setOpenKeys] = useState(context?.openKeys);
     const [collapsed, setCollapsed] = useState(false);
     const root = Constant.MenuConfig.MainMenu;
-
 
     const onOpenChange = (keys: any) => {
         const latestOpenKey = keys.find(((key: any) => openKeys?.indexOf(key) === -1));
@@ -35,7 +34,9 @@ const LeftMenu = ({ context, translator }: any) => {
 
         >
             <div className={styles.layout_left_menu_sider_children}>
-                <Image src={logo} alt="logo" width={collapsed ? 80 : 200} height={collapsed ? 60 : 200} />
+                <div className={styles.left_menu_logo}>
+                <Image src={logo} alt="logo" width={collapsed ? 80 : 200} height={collapsed ? 60 :100} />
+                </div>
                 <div className={styles.left_menu_item}>
                     <MenuUI
                         theme={root.theme}

@@ -10,7 +10,7 @@ import Constants from "src/core/application/common/constants";
 export const notifyInfo = (translator: any, title: string, message?: string) => {
     if (message == null || message.length == 0) {
         notification.info({
-            message: translator('toast-info'),
+            message: translator('Thông báo'),
             description: title,
             placement: Constants.ToastMessage.Notification.Position,
             duration: Constants.ToastMessage.Notification.Duration,

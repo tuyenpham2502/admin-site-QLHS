@@ -111,3 +111,28 @@ a {
   
 }
 
+
+.full_page_loading {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.801);
+    z-index: 99999;
+}
+
+
+.ant-row {
+  background-color: #131720;
+}
+
+.page-name {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+

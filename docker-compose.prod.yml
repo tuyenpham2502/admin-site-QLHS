@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  qlhs-frontend-admin:
+    stdin_open: true
+    image: qlhs-frontend-admin:${version}
+    container_name: qlhs-frontend-admin-${version}
+    restart: always
+    command: ${command}
+    ports:
+      - 17013:17013
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    # networks:
+    #   default:
+    #     ipv4_address: 10.17.0.13
+# Network
+# networks:
+#   default:
+#     external: true
+#     name: qlhs-microservices-network.local

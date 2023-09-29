@@ -1,10 +1,33 @@
+import React from "react";
 import 'assets/styles/globals.css'
-import { Poppins } from 'next/font/google'
-import type { AppProps } from 'next/app'
+import { appWithTranslation } from 'next-i18next'
+import App from 'next/app'
+import { RecoilRoot } from 'recoil'
+import { DefaultSeo } from 'next-seo'
+import RecoilOutsideComponent from 'src/infrastructure/common/libs/recoil-outside/Service'
 
+const QLHSSystemAdminApp = ({ Component, pageProps }) => {
+  
+  return (
+      <RecoilRoot>
+          <RecoilOutsideComponent />
+          <DefaultSeo />
+          <Component {...pageProps} />
+      </RecoilRoot>
+  )
 
-
-
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
 }
+
+QLHSSystemAdminApp.getInitialProps = async (appContext: any) => {
+  const appProps = await App.getInitialProps(appContext);
+  return {
+      pageProps: {
+          ...appProps.pageProps,
+          
+      },
+  }
+}
+
+export default appWithTranslation(QLHSSystemAdminApp);
+
+

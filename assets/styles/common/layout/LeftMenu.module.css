@@ -30,3 +30,7 @@
     background: transparent;
     /* make scrollbar transparent */
 }
+
+.layout_left_menu .left_menu_logo {
+    padding: 6px 0;
+}
