@@ -70,7 +70,7 @@ export default class RequestService implements IRequestService {
             const _options = this.getOptions(context);
             return this.processRequest(await axios.get(_url, this.getOptions(context)));
         } catch (e) {
-            if(e.response?.status == 400 || e.response?.status == 401 || e.response.status == 500){
+            if(e.response?.status == 400 || e.response?.status == 401 || e.response?.status == 500){
                 this.localStorageService.setStorage(Constants.API_TOKEN_STORAGE, new Cookie(false, "", ""));
                 
             }
@@ -96,7 +96,7 @@ export default class RequestService implements IRequestService {
             // this.loggerService.error(e);
             // throw e;
 
-            if(e.response?.status == 400 || e.response?.status == 401 || e.response.status == 500){
+            if(e.response?.status == 400 || e.response?.status == 401 || e.response?.status == 500){
                 this.localStorageService.setStorage(Constants.API_TOKEN_STORAGE, new Cookie(false, "", ""));
             }
 

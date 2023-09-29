@@ -10,7 +10,9 @@ class QLHSSystemAdminApp extends Document {
   render() {
     return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <link rel="icon" href="favicon/favicon.ico" />
+      </Head>
       <body>
         <Main />
         <NextScript />
