@@ -22,7 +22,7 @@ RUN yarn install
 RUN rm -rf .next
 RUN pwd
 RUN ls -la
-RUN yarn build
+RUN yarn build:dev
 
 RUN pwd
 RUN ls -la

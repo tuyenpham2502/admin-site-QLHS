@@ -16,7 +16,7 @@ case "$env" in
   development)
     export env=prod
     export COMPOSE_PROJECT_NAME="qlhs-dev-biz-services" 
-    export command='yarn start'
+    export command='yarn start:dev'
     ;;
 #    uat)
 #       export env=uat
