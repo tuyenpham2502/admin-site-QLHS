@@ -20,3 +20,8 @@ services:
 #   default:
 #     external: true
 #     name: qlhs-microservices-network.local
+  nginx:
+    build: ./nginx
+    ports:
+      - 17013:17013
+      
