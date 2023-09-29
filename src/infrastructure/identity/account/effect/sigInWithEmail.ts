@@ -14,6 +14,7 @@ import {
   RolesState,
   UserIdState,
 } from "src/core/application/common/atoms/identity/account/ProfileState";
+import { notifyInfo } from "src/infrastructure/common/components/controls/toast/toast-message";
 
 export const signInWithEmailAsync = async (
   email: string,
@@ -35,6 +36,7 @@ export const signInWithEmailAsync = async (
 };
 
 export const getMyProfileAsync = async (
+  t: any,
   cookie: Cookie,
   router: NextRouter,
   // loggerService: LoggerService,
@@ -50,6 +52,7 @@ export const getMyProfileAsync = async (
     if (response.status == 200) {
       let arrRoles = (response as SuccessResponse)?.data.getMyProfile.user.role;
       if (arrRoles[0].toUpperCase() == Roles.User) {
+        notifyInfo(t,"Bạn không có quyền truy cập vào trang này");
         localStorageService.setStorage(
           Constant.API_TOKEN_STORAGE,
           new Cookie(false, "", "")

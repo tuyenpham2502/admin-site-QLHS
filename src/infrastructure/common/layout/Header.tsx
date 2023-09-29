@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-    LogoutOutlined,
     SearchOutlined,
     MailOutlined,
     BellOutlined,
@@ -16,6 +15,8 @@ import styles from 'assets/styles/common/layout/Header.module.css'
 import Link from 'next/link';
 import { AccountManagementService } from 'src/infrastructure/identity/account/service/AccountManagementService';
 import Endpoint from 'src/core/application/common/Endpoint';
+import {useRecoilValue } from 'recoil';
+import { ProfileState } from 'src/core/application/common/atoms/identity/account/ProfileState';
 
 const LogoutAsync = async (
     context: any,
@@ -46,10 +47,11 @@ const LogoutAsync = async (
 
 
 const Header = ({ context, translator, ...props }: any) => {
-
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const router = useRouter();
     const [textSearch, setTextSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const myProfileRef = useRecoilValue(ProfileState);
 
     const signOut = async () => {
         await LogoutAsync(
@@ -59,6 +61,8 @@ const Header = ({ context, translator, ...props }: any) => {
             setIsLoading
         )
     }
+
+    console.log(myProfileRef);
 
     const onChange = (e: any) => {
         setTextSearch(e.target.value);
@@ -99,6 +103,20 @@ const Header = ({ context, translator, ...props }: any) => {
         }
     ];
 
+    const handleAvatar = () => {
+        if(myProfileRef?.data?.avatar != null){
+            return (
+                <img src = {`${baseUrl}/FileStorage/${myProfileRef?.data?.avatar}`} className={styles.avatar} alt="Avatar" />
+            );
+        }
+        else{
+            return (
+                <Avatar icon={<UserOutlined />} size={40} />
+            );
+        }
+    }
+
+
     return (
         <Layout.Header className={styles.header_main_layout_background}>
             <Row>
@@ -117,17 +135,17 @@ const Header = ({ context, translator, ...props }: any) => {
                 </Col>
                 <Col span={8} className={styles.right_header_layout} >
                     <div className={styles.icon_right_header}>
-                        <MailOutlined style={{ color: "#D60A0B", fontSize: "18px" }} />
+                        <MailOutlined style={{ color: "#fff", fontSize: "18px" }} />
                     </div>
                     <div className={styles.icon_right_header}>
-                        <BellOutlined style={{ color: "#D60A0B", fontSize: "18px" }} />
+                        <BellOutlined style={{ color: "#fff", fontSize: "18px" }} />
                     </div>
                     <div className={styles.icon_right_header}>
-                        <LineOutlined style={{ color: "#D60A0B", fontSize: "18px" }} rotate={90} />
+                        <LineOutlined style={{ color: "#fff", fontSize: "18px" }} rotate={90} />
                     </div>
                     <Dropdown menu={{ items }} placement="bottomRight" trigger={['hover']} >
                         <div className={styles.icon_right_header}>
-                            <Avatar icon={<UserOutlined />} size={40} />
+                            {handleAvatar()}
                         </div>
                     </Dropdown>
                 </Col>

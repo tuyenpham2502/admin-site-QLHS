@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from 'assets/images/logo.png'
+import logo from 'assets/images/logo.svg'
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import Image from 'next/image'
@@ -34,7 +34,9 @@ const LeftMenu = ({ context, translator }: any) => {
 
         >
             <div className={styles.layout_left_menu_sider_children}>
-                <Image src={logo} alt="logo" width={collapsed ? 80 : 200} height={collapsed ? 60 : 200} />
+                <div className={styles.left_menu_logo}>
+                <Image src={logo} alt="logo" width={collapsed ? 80 : 200} height={collapsed ? 60 :100} />
+                </div>
                 <div className={styles.left_menu_item}>
                     <MenuUI
                         theme={root.theme}

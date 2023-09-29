@@ -3,8 +3,8 @@ version: '3.7'
 services:
   qlhs-frontend-admin:
     stdin_open: true
-    image: qlhs-frontend-admin
-    container_name: qlhqlhs-frontend-admin
+    image: qlhs-frontend-admin:${version}
+    container_name: qlhqlhs-frontend-admin:${version}
     restart: always
     command: ${command}
     ports:

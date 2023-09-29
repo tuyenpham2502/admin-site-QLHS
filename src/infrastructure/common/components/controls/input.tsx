@@ -1,7 +1,5 @@
 import React from "react";
 import { Input, Row } from 'antd';
-import styles from 'styles/pages/account/sign-in.module.css'
-import { MessageError } from "./message-error";
 
 type Props = {
     placeholder: string;
@@ -20,7 +18,7 @@ const InputText = (props: Props) => {
     return (
         <Input
             prefix={prefix}
-            style={{ width: '100%' }}
+            style={{ width: '100%', backgroundColor: '#F5F5F5' }}
             placeholder={placeholder}
             value={value}
             onChange={onChange}

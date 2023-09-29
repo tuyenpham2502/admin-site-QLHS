@@ -89,7 +89,7 @@ const SignInPage = (context) => {
         if (isValidateData()) {
             let res = await signInWithEmailAsync(user.email, user.password, context);
             if(res && res.status == 200) {
-                await getMyProfileAsync(context, router, setIsLoading);
+                await getMyProfileAsync(t, context, router, setIsLoading);
             }
         }
     }

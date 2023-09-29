@@ -66,7 +66,7 @@ export default class RequestService implements IRequestService {
     async makeGetRequestAsync(url: string, params: any, context: Cookie): Promise<RequestResponse> {
         try {
             const _params = params ? Object.keys(params).map(key => `${key}=${encodeURIComponent(params[key])}`).join("&") : "";
-            const _url = `${this.baseURL}/${url}${(_params === "" ? "" : "?" + _params)}`;
+            const _url = `${this.baseURL}/api/${url}${(_params === "" ? "" : "?" + _params)}`;
             const _options = this.getOptions(context);
             return this.processRequest(await axios.get(_url, this.getOptions(context)));
         } catch (e) {
@@ -85,7 +85,7 @@ export default class RequestService implements IRequestService {
     async makePostRequestAsync(endpoint: string, params: object, context: Cookie): Promise<RequestResponse> {
         //const setIsLoading = useSetRecoilState(LoadingState);
         try {
-            const _url = `${this.baseURL}/${endpoint}`;
+            const _url = `${this.baseURL}/api/${endpoint}`;
             await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url })
             const _params = JSON.stringify(params);
             const _options = this.getOptions(context, false);
@@ -110,7 +110,7 @@ export default class RequestService implements IRequestService {
     async makeGetFileRequestAsync(url: string, params: any, context: Cookie): Promise<RequestResponse> {
         try {
             const _params = params ? Object.keys(params).map(key => `${key}=${encodeURIComponent(params[key])}`).join("&") : "";
-            const _url = `${this.baseURL}/${url}${(_params === "" ? "" : "?" + _params)}`;
+            const _url = `${this.baseURL}/api/${url}${(_params === "" ? "" : "?" + _params)}`;
             const _options = this.getOptions(context);
             return this.processRequest(await axios.get(_url, this.getOptions(context, true)));
         } catch (e) {
@@ -148,7 +148,7 @@ export default class RequestService implements IRequestService {
     async makePutRequestAsync(endpoint: string, params: any, context: Cookie): Promise<RequestResponse> {
         //const setIsLoading = useSetRecoilState(LoadingState);
         try {
-            const _url = `${this.baseURL}/${endpoint}`;
+            const _url = `${this.baseURL}/api/${endpoint}`;
             await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url })
             const _params = JSON.stringify(params);
             const _options = this.getOptions(context);
