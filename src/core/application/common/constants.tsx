@@ -55,7 +55,7 @@ export default class Constant {
                     "Catalog",
                     "Catalog",
                     [],
-                    "/Catalog"
+                    "/catalog/list"
                 ),
                 new GroupedMenuItem(
                     [],
@@ -72,7 +72,7 @@ export default class Constant {
                             "Add item",
                             "Add item",
                             [],
-                            "/Page/add-item"
+                            "/page/add-item"
                         ),
                         new MenuItem(
                             [],
