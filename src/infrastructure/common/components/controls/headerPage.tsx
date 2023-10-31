@@ -14,7 +14,7 @@ export const HeaderPage = (props:Props) => {
 
 
     return (
-        <Row justify={"space-between"} align={"m"} className={"header-page"}>
+        <Row justify={"space-between"} align={"middle"} className={"header-page"}>
             <Col className="page-name">
                 {titlePage}
             </Col>
