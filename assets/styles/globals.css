@@ -125,14 +125,26 @@ a {
     z-index: 99999;
 }
 
-
-.ant-row {
-  background-color: #131720;
-}
-
 .page-name {
   color: #fff;
   font-size: 30px;
   font-weight: 600;
 }
 
+
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+    border-right: none !important;
+}
+
+.header-page {
+  background-color: #131720;
+  padding-bottom: 20px;
+}
+
+.app-button {
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}

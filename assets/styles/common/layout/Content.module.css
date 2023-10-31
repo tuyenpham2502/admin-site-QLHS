@@ -15,6 +15,7 @@
     margin-bottom: 10px;
     flex-direction: column;
     margin-top: 20px;
+    padding: 0 16px;
 }
 
 .main_layout_background::-webkit-scrollbar {

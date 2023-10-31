@@ -1,16 +1,9 @@
 import {
     MenuTheme
 } from "antd";
-import { HomeOutlined, AppstoreOutlined } from '@ant-design/icons';
+import { HomeOutlined, AppstoreOutlined, FolderOutlined, UserOutlined, CommentOutlined, StarOutlined } from '@ant-design/icons';
 import Image from 'next/image'
-import iconDashBorad from 'assets/icons/icon-dashBoard.png'
-import iconStudent from 'assets/icons/icon-student.png'
 import iconArrow from 'assets/icons/icon-arrow.png'
-import iconParents from 'assets/icons/icon-parents.png'
-import iconTeacher from 'assets/icons/icon-teachers.png'
-import iconAccount from 'assets/icons/icon-account.png'
-import iconSubject from 'assets/icons/icon-subject.png'
-import iconSetting from 'assets/icons/icon-setting.png'
 import Menu from "src/core/application/common/models/LeftMenu/Menu";
 import MenuItem from "src/core/application/common/models/LeftMenu/MenuItem";
 import { MenuKeys } from "src/core/domain/enums/MenuKeys";
@@ -59,10 +52,10 @@ export default class Constant {
                 ),
                 new GroupedMenuItem(
                     [],
-                    MenuKeys.Page,
-                    <Image src={iconTeacher} alt='Page' />,
-                    "Page",
-                    "Page",
+                    MenuKeys.Pages,
+                    <FolderOutlined />,
+                    "Pages",
+                    "Pages",
                     [],
                     [
                         new MenuItem(
@@ -72,45 +65,45 @@ export default class Constant {
                             "Add item",
                             "Add item",
                             [],
-                            "/page/add-item"
+                            "/pages/add-item"
                         ),
                         new MenuItem(
                             [],
                             MenuKeys.EditUser,
                             <Image src={iconArrow} alt='Arrow' />,
-                            "Add Teachers",
-                            "Add Teachers",
+                            "Edit user",
+                            "Edit user",
                             [],
-                            "/teachers/add-teacher"
+                            "/pages/edit-user"
                         ),
                     ]
                 ),
                 new MenuItem(
                     [],
                     MenuKeys.Users,
-                    <Image src={iconSubject} alt='Users' />,
+                    <UserOutlined />,
                     "Users",
                     "Users",
                     [],
-                    "/users"
+                    "/users/list"
                 ),
                 new MenuItem(
                     [],
                     MenuKeys.Comments,
-                    <Image src={iconSetting} alt='Comments' />,
+                    <CommentOutlined />,
                     "Comments",
                     "Comments",
                     [],
-                    "/comments"
+                    "/comments/list"
                 ),
                 new MenuItem(
                     [],
                     MenuKeys.Reviews,
-                    <Image src={iconSetting} alt='Comments' />,
+                    <StarOutlined />,
                     "Reviews",
                     "Reviews",
                     [],
-                    "/reviews"
+                    "/reviews/list"
                 ),
             ],
         )

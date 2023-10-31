@@ -14,7 +14,7 @@ const LeftMenu = ({ context, translator }: any) => {
     const [openKeys, setOpenKeys] = useState(context?.openKeys);
     const [collapsed, setCollapsed] = useState(false);
     const root = Constant.MenuConfig.MainMenu;
-
+    console.log("context", context);
     const onOpenChange = (keys: any) => {
         const latestOpenKey = keys.find(((key: any) => openKeys?.indexOf(key) === -1));
         if (MenuSubKeys.indexOf(latestOpenKey) === -1) {
@@ -35,7 +35,7 @@ const LeftMenu = ({ context, translator }: any) => {
         >
             <div className={styles.layout_left_menu_sider_children}>
                 <div className={styles.left_menu_logo}>
-                <Image src={logo} alt="logo" width={collapsed ? 80 : 200} height={collapsed ? 60 :100} />
+                <Image src={logo} alt="logo" width={collapsed ? 80 : 160} height={collapsed ? 60 :80} />
                 </div>
                 <div className={styles.left_menu_item}>
                     <MenuUI

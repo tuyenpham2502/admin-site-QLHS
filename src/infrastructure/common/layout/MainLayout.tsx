@@ -11,18 +11,22 @@ import { FullPageLoading } from "../components/controls/loading";
 import Cookie from "src/core/application/common/models/Cookie";
 import Endpoint from "src/core/application/common/Endpoint";
 import { AccountManagementService } from "src/infrastructure/identity/account/service/AccountManagementService";
-import { Roles } from "src/core/domain/enums/Roles";
 import { ProfileState, RolesState, UserIdState } from "src/core/application/common/atoms/identity/account/ProfileState";
-import { RecoilState } from "recoil";
 import SuccessResponse from "src/core/application/dto/common/responses/SuccessResponse";
 import { setRecoilStateAsync } from "../libs/recoil-outside/Service";
+import dynamic from "next/dynamic";
 
+const DynamicComponentWithNoSSR = dynamic(
+    () => import('./LeftMenu'),
+    { ssr: false }
+)
 const getMyProfileAsync = async (
 
     cookie: Cookie,
     // loggerService: LoggerService,
     setLoading: Function
 ) => {
+    setLoading(true);
     let response = await new AccountManagementService().getMyProfileAsync(
         Endpoint.AccountManagement.getMyProfile,
         {},
@@ -42,10 +46,10 @@ const getMyProfileAsync = async (
 
         setTimeout(() => {
             setLoading(false);
-        }, 300);
+        }, 0);
 
-        return response;
     };
+    return response;
 }
 
 
@@ -59,7 +63,9 @@ const MainLayout = ({ context, translator, ...props }: any) => {
         if (!storage?.isAuthenticated) {
             router.push('/account/sign-in.html');
         }
-    }, [storage]);
+    }, [router, storage]);
+
+
 
     const getMyProfile = async () => {
         await getMyProfileAsync(
@@ -69,7 +75,7 @@ const MainLayout = ({ context, translator, ...props }: any) => {
     }
 
     useEffect(() => {
-        getMyProfile()
+        getMyProfile();
     }, []);
 
     if (isLoading) {

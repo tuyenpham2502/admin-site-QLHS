@@ -1,0 +1,66 @@
+.stat_items_wrapper {
+    background-color: #131720;
+    padding-bottom: 15px;
+}
+
+.stat_item{
+    background-color: #151f30;
+    color: #fff;
+    border-radius:16px ;
+    padding: 20px;
+}
+
+.stat_item .stat_title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.stat_item .stat_value {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.stat_item .stat_icon {
+    font-size: 34px;
+    color: #2f80ed;
+}
+
+.table_item {
+    background-color: #151f30;
+    color: #fff;
+    border-radius:16px ;
+    padding: 20px;
+}
+
+.table_item .header_table_item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(47,128,237,0.1);
+
+}
+
+.table_item .table_icon {
+    font-size: 24px;
+    color: #2f80ed;
+}
+
+.table_item .table_title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.table_item .reload_icon {
+    font-size: 16px;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.table_item .table_tag_view_all {
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.table_item .table_tag_view_all:hover, .table_item .reload_icon:hover {
+    color: #2f80ed;
+}
+

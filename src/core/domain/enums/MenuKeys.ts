@@ -6,7 +6,7 @@ export enum MenuKeys {
     //Catalog
     Catalog = 'catalog',
     //page
-    Page = 'page',
+    Pages = 'pages',
     AddItem = 'addItem',
     EditUser = 'editUser',
     //users

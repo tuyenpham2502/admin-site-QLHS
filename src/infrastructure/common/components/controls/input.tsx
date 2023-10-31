@@ -12,7 +12,7 @@ type Props = {
 }
 
 
-const InputText = (props: Props) => {
+export const InputText = (props: Props) => {
     const { placeholder, value, onChange, prefix, size, onBlur,bordered } = props;
 
     return (
@@ -28,5 +28,3 @@ const InputText = (props: Props) => {
         />
     )
 };
-
-export { InputText };
