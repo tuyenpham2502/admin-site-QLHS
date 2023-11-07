@@ -4,7 +4,9 @@ import { NextSeo } from "next-seo";
 import { useTranslation } from "react-i18next";
 import { MenuKeys } from "src/core/domain/enums/MenuKeys";
 import MainLayout from "src/infrastructure/common/layout/MainLayout";
-
+import styles from "assets/styles/pages/catalog/list.module.css" 
+import { formatTotalCatalog } from "src/infrastructure/helpers";
+import CatalogTable from "../comments/table/table-catalog";
 
 
 const CatalogPage = (context) => {
@@ -14,13 +16,16 @@ const CatalogPage = (context) => {
     return (
         <MainLayout context={context} translator={t}>
             <NextSeo title="Catalog" description="Catalog" />
-            <Row justify={"space-between"}>
+            <Row className={'header-page'}>
                 <Col className="page-name">
                     Catalog
                 </Col>
-                <Col>
-                    <Button>ADD ITEM</Button>
+                <Col className={styles.list_total}>
+                    {formatTotalCatalog(12344234)} total
                 </Col>
+            </Row>
+            <Row>
+                {/* <CatalogTable /> */}
             </Row>
         </MainLayout>
     )

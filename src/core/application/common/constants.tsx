@@ -114,6 +114,11 @@ export default class Constant {
         static DateFormat = "yyyy-MM-DD";
     };
 
-
+    static DashBoardTableItemsType = class {
+        static TopItems = "TopItems";
+        static LatestItems = "LatestItems";
+        static LatestUsers = "LatestUsers";
+        static LatestReviews = "LatestReviews";
+    }
 
 }

@@ -21,3 +21,8 @@ export const validateFields = (isImplicitChange = false, key, isCheck, setError,
 
 
 
+
+export const formatTotalCatalog = (total) => {
+    return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+

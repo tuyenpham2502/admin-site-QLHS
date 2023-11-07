@@ -141,6 +141,9 @@ a {
 .header-page {
   background-color: #131720;
   padding-bottom: 20px;
+  border-bottom: 1px solid rgba(47,128,237,0.1);
+  align-items: center;
+  
 }
 
 .app-button {
@@ -148,3 +151,69 @@ a {
   font-size: 14px;
   font-weight: 500;
 }
+
+.dashboard-table-wrapper {
+  width: 100%;
+}
+
+.dashboard-table-wrapper .ant-table-wrapper .ant-table {
+  background: none;
+  color: #e0e0e0;
+
+}
+
+.dashboard-table-wrapper .ant-table-wrapper .ant-table-tbody >tr.ant-table-row:hover>td {
+  background: unset;
+}
+
+.dashboard-table-wrapper .ant-table-thead tr th {
+  background-color: #151f30;
+  color: #e0e0e0;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(47,128,237,0.1);
+}
+
+
+.dashboard-table-wrapper .ant-table-thead tr th::before{
+  display: none;
+}
+
+.dashboard-table-wrapper .ant-table-wrapper .ant-table-tbody >tr >td {
+  border-bottom: none;
+}
+
+.ant-input {
+  background-color: #151f30;
+  color: #fff;
+  border: none;
+  width: 100%;
+}
+
+.ant-input:hover {
+  background-color: #151f30;
+  color: #fff;
+  border: none;
+}
+
+.ant-input::placeholder {
+  color: #fff;
+}
+
+.ant-input-password {
+  background-color: #151f30;
+  color: #fff;
+  border: none;
+}
+
+.ant-input-affix-wrapper .anticon.ant-input-password-icon {
+  color: #fff;
+}
+
+.ant-input-affix-wrapper .anticon.ant-input-password-icon:hover {
+  color: #2f80ed;
+}
+
+.ant-checkbox .ant-checkbox-inner {
+  background-color: #151f30;
+}
+

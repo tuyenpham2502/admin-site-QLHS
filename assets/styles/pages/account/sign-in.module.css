@@ -1,34 +1,53 @@
 .content_sign_in{
     height: 100vh;
-}
-
-.content_sign_in .right_content{
-    background-color: #14238A;
-    display: flex;
-    justify-content: center;
+    background: url('../../../images/login_background.jpg') no-repeat center center fixed;
     align-items: center;
+    justify-content: center;
 }
 
-.right_content .sign_in_wrapper{
-    width: 60%;
-    background-color: #FFFFFF;
-    border-radius: 15px;
-    padding: 62px 32px;    
+.content_sign_in .logo {
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
-.sign_in_wrapper .form_sign_in{
+
+.content_sign_in .sign_in_wrapper{    
+    background-color: #131720;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.form_sign_in .sign_in_input{
-    height: 64px;
-}
-
-.form_sign_in .button_sign_in{
-    height : 64px;
+    justify-content: center;
+    border-radius: 16px;
+    position: relative;
     width: 100%;
-    font-size: 22px;
-    
+    max-width: 400px;
+    border: 1px solid #151f30;
+
+}
+
+.content_sign_in .input_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.button_sign_in_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+
+.button_sign_in{
+    height : 50px;
+    border-radius: 16px;
+    width: 100%;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.remember_me {
+    color: #e0e0e0;
+
 }

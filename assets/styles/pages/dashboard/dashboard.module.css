@@ -1,4 +1,5 @@
 .stat_items_wrapper {
+    padding-top: 20px;
     background-color: #131720;
     padding-bottom: 15px;
 }
@@ -62,5 +63,17 @@
 
 .table_item .table_tag_view_all:hover, .table_item .reload_icon:hover {
     color: #2f80ed;
+}
+
+.table_star_rating {
+    font-size: 16px;
+    color: #2f80ed;
+    margin-right: 6px;
+}
+
+.table_star_rating_value {
+    font-size: 14px;
+    color: #e0e0e0;
+    font-weight: 500;
 }
 

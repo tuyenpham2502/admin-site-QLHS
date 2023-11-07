@@ -5,7 +5,7 @@ type Props = {
     data: number;
     icon?: any;
 }
-export const StatItem = (props: Props) => {
+const StatItem = (props: Props) => {
 
     const { title, data, icon } = props;
     return (
@@ -25,3 +25,5 @@ export const StatItem = (props: Props) => {
     )
 
 }
+
+export default StatItem;

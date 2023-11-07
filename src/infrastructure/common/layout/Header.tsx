@@ -119,19 +119,7 @@ const Header = ({ context, translator, ...props }: any) => {
     return (
         <Layout.Header className={styles.header_main_layout_background}>
             <Row>
-                <Col span={16} className={styles.left_header_layout} >
-                    <InputText placeholder="Search"
-                        onBlur={onBlurSearch} onChange={onChange}
-                        bordered={false}
-                        size={"large"}
-                        value={textSearch}
-                        prefix={<SearchOutlined
-                            style={{
-                                color: "#a3a3a3",
-                                fontSize: "22px"
-                            }} />}
-                    />
-                </Col>
+                
                 <Col span={8} className={styles.right_header_layout} >
                     <div className={styles.icon_right_header}>
                         <MailOutlined style={{ color: "#fff", fontSize: "18px" }} />

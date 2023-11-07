@@ -25,6 +25,8 @@ export default class RequestService implements IRequestService {
             headers: {
                 "Authorization": `Bearer ${token}`,
             },
+            
+            // timeout: 1000,
             // cancelToken: cancellationToken
         };
 

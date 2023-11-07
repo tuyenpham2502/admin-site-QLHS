@@ -5,4 +5,8 @@ export default class Endpoint {
         static getMyProfile = 'users/me'
         static logout = 'auth/logout'
     }
+
+    static DashboardManagement = class {
+        static getFilms = 'film/getFilms'
+    }
 }
