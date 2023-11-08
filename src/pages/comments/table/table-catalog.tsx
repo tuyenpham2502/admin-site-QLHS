@@ -88,9 +88,9 @@ const CatalogTable = (props: Props) => {
       render: (actions: string) => {
         return (
           <Row className={styles.action_item_wrapper}>
-            {/* <Col className={styles.action_item}>
+            <Col className={styles.action_item}>
               <LockOutlined style={{ color: "#29b474", fontSize: "16px" }} />
-            </Col> */}
+            </Col>
             <Col className={styles.action_item}>
               <EyeOutlined style={{ color: "#ffc312", fontSize: "16px" }} />
             </Col>
