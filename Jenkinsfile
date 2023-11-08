@@ -9,9 +9,11 @@ pipeline {
     stages {
 
         stage('SSH SERVER') {
+            steps {
             sshagent(['ssh-remote']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l tuyen 192.168.0.100 touch text.txt'
-            }           
+                }      
+            }     
         }
 
         stage('SETTING UP PERMISSIONS PHASE') {
