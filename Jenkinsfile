@@ -13,7 +13,8 @@ pipeline {
             sshagent(['ssh-remote']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l tuyen 192.168.0.100 '
                 sh 'pwd'
-                sh 'ls'
+                sh 'git pull origin develop'
+                sh './build.sh -e $EVN_NAME -v $GIT_COMMIT'
                 }      
             }     
         }
