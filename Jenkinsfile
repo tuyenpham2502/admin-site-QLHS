@@ -7,6 +7,13 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
     }
     stages {
+
+        stage('SSH SERVER') {
+            sshagent(['ssh-remote']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l tuyen 192.168.0.100 touch text.txt'
+            }           
+        }
+
         stage('SETTING UP PERMISSIONS PHASE') {
           when {
           	branch 'develop'
