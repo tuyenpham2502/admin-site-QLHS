@@ -120,7 +120,7 @@ const Header = ({ context, translator, ...props }: any) => {
         <Layout.Header className={styles.header_main_layout_background}>
             <Row>
                 
-                <Col span={8} className={styles.right_header_layout} >
+                <Col xxl={2} xl={2} lg={4} className={styles.right_header_layout} >
                     <div className={styles.icon_right_header}>
                         <MailOutlined style={{ color: "#fff", fontSize: "18px" }} />
                     </div>

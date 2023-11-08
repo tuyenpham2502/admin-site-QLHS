@@ -182,6 +182,38 @@ a {
   border-bottom: none;
 }
 
+.catalog-table-wrapper {
+  width: 100%;
+}
+
+.catalog-table-wrapper .ant-table-wrapper .ant-table {
+  background: none;
+  color: #e0e0e0;
+}
+
+
+.catalog-table-wrapper .ant-table-wrapper .ant-table-tbody >tr.ant-table-row:hover>td {
+  background: unset;
+}
+
+
+.catalog-table-wrapper .ant-table-thead tr th {
+  background-color: #131720;
+  color: #e0e0e0;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(47,128,237,0.1);
+}
+
+
+.catalog-table-wrapper .ant-table-thead tr th::before{
+  display: none;
+}
+
+
+.catalog-table-wrapper .ant-table-wrapper .ant-table-tbody >tr >td {
+  border-bottom: none;
+}
+
 .ant-input {
   background-color: #151f30;
   color: #fff;

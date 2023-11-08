@@ -4,3 +4,49 @@
     margin-left: 15px;
     margin-top: 10px;
 }
+
+
+.table_star_rating {
+    font-size: 16px;
+    color: #2f80ed;
+    margin-right: 6px;
+}
+
+.table_star_rating_value {
+    font-size: 14px;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.action_item_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.action_item_wrapper .action_item {
+    border-radius: 10px;
+    background-color: rgba(41,180,116,0.1);
+    width: 30px;
+    margin-right: 10px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.action_item:hover {
+    background-color: rgba(41,180,116,0.2);
+}
+
+.table_status_visible {
+    color: #29b474;   
+}
+
+.table_status_hidden {
+    color: #eb5757;
+}
