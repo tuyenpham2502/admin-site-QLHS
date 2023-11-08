@@ -12,9 +12,8 @@ pipeline {
             steps {
             sshagent(['ssh-remote']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l tuyen 192.168.0.100 '
-                sh 'cd qlhs/client-QLHS/'
-                sh 'git pull origin develop'
-                sh './build.sh -e $EVN_NAME -v $GIT_COMMIT'
+                sh 'pwd'
+                sh 'ls'
                 }      
             }     
         }
