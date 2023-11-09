@@ -16,7 +16,6 @@ pipeline {
                 sh 'chmod +x ./build.sh'
                 sh 'ls -l'
                 sh 'cat ./build.sh'
-                sh 'docker-compose --version'
             }
         }
         stage('BUILDING PHASE') {
