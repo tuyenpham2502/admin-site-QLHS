@@ -14,7 +14,7 @@ done
 export version=$env-v$version
 case "$env" in
   development)
-    export env=prod
+    export env=dev
     export COMPOSE_PROJECT_NAME="qlhs-dev-biz-services" 
     export command='yarn start:dev'
     ;;
