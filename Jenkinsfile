@@ -13,7 +13,6 @@ pipeline {
         //   }
             steps {
                 echo 'Setting up permission ...'
-                sh 'whoami'
                 sh 'chmod +x ./build.sh'
                 sh 'ls -l'
                 sh 'cat ./build.sh'
@@ -27,7 +26,7 @@ pipeline {
                 echo 'Building ...'
                 sh 'pwd'
                 sh 'ls'
-                sh './build.sh -e $EVN_NAME -v $GIT_COMMIT'
+                sh 'sudo ./build.sh -e $EVN_NAME -v $GIT_COMMIT'
             }
         }
          stage('CHECKING DOCKER PHASE') {
