@@ -26,7 +26,7 @@ pipeline {
                 echo 'Building ...'
                 sh 'pwd'
                 sh 'ls'
-                sh 'sudo ./build.sh -e $EVN_NAME -v $GIT_COMMIT'
+                sh './build.sh -e $EVN_NAME -v $GIT_COMMIT'
             }
         }
          stage('CHECKING DOCKER PHASE') {
