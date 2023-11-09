@@ -36,7 +36,7 @@ pipeline {
         //   }
             steps {
                 echo 'Checking docker ...'
-                sh '/usr/local/bin/docker ps'
+                sh '/usr/bin/docker ps'
             }
         }
     }
