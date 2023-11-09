@@ -15,7 +15,7 @@ pipeline {
                 echo 'Setting up permission ...'
                 sh 'chmod +x ./build.sh'
                 sh 'ls -l'
-                sh 'touch ./build.sh'
+                sh 'cat ./build.sh'
             }
         }
         stage('BUILDING PHASE') {
