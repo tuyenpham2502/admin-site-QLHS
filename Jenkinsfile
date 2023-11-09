@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-         EVN_NAME='dev'
+         EVN_NAME='prod'
     }
     options {
         timeout(time: 1, unit: 'HOURS')
