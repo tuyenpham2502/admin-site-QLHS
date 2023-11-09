@@ -13,6 +13,7 @@ pipeline {
         //   }
             steps {
                 echo 'Setting up permission ...'
+                sh 'whoami'
                 sh 'chmod +x ./build.sh'
                 sh 'ls -l'
                 sh 'cat ./build.sh'
