@@ -8,9 +8,9 @@ pipeline {
     }
     stages {
         stage('SETTING UP PERMISSIONS PHASE') {
-          when {
-          	branch 'develop'
-          }
+        //   when {
+        //   	branch 'develop'
+        //   }
             steps {
                 echo 'Setting up permission ...'
                 sh 'chmod +x ./build.sh'
@@ -18,9 +18,9 @@ pipeline {
             }
         }
         stage('BUILDING PHASE') {
-          when {
-          	branch 'develop'
-          }
+        //   when {
+        //   	branch 'develop'
+        //   }
             steps {
                 echo 'Building ...'
                 sh 'pwd'
@@ -29,9 +29,9 @@ pipeline {
             }
         }
          stage('CHECKING DOCKER PHASE') {
-           when {
-          	branch 'develop'
-          }
+        //    when {
+        //   	branch 'develop'
+        //   }
             steps {
                 echo 'Checking docker ...'
                 sh '/usr/local/bin/docker ps'
