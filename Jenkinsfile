@@ -7,17 +7,6 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
     }
     stages {
-
-        stage('SSH SERVER') {
-            steps {
-            sshagent(['ssh-remote']) {
-                sh 'ssh -o StrictHostKeyChecking=no -l tuyen 192.168.0.100 '
-                sh 'pwd'
-                sh './build.sh -e $EVN_NAME -v $GIT_COMMIT'
-                }      
-            }     
-        }
-
         stage('SETTING UP PERMISSIONS PHASE') {
           when {
           	branch 'develop'
