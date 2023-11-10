@@ -40,9 +40,9 @@ const CatalogPage = (context) => {
           {formatTotalCatalog(12344234)} total
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <CatalogTable data={topFilms} type={Constant.DashBoardTableItemsType.TopItems} />
-      </Row>
+      </Row> */}
     </MainLayout>
   );
 };
