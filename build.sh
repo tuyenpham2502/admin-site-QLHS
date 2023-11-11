@@ -24,12 +24,12 @@ case "$env" in
 #       export command='yarn start:uat'
 #       source ~/.zshrc
 #       ;;
-#   production)
-#     export env=prod
-#     export COMPOSE_PROJECT_NAME="qs-prod-biz-services"
-#     export command='yarn start:prod'
-#     source ~/.zshrc
-#     ;;
+  production)
+    export env=prod
+    export COMPOSE_PROJECT_NAME="qlhs-prod-biz-services"
+    export command='yarn start:prod'
+    source ~/.zshrc
+    ;;
 #   uat)
 #     export env=UAT
 #     export COMPOSE_PROJECT_NAME="qs-uat-biz-services"

@@ -6,6 +6,7 @@
     "dev": "env-cmd -f src/.env.development next dev -p 3000",
     "build:dev": "env-cmd -f src/.env.development next build",
     "start:dev": "env-cmd -f src/.env.development next start -p 17013",
+    "start:prod": "env-cmd -f src/.env.production next start -p 17013",
     "lint": "next lint"
   },
   "dependencies": {
