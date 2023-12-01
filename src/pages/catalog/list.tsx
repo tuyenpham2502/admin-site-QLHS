@@ -41,7 +41,7 @@ const CatalogPage = (context) => {
         </Col>
       </Row>
       <Row>
-        {/* <CatalogTable data={topFilms} type={Constant.DashBoardTableItemsType.TopItems} /> */}
+        <CatalogTable data={topFilms} type={Constant.DashBoardTableItemsType.TopItems} />
       </Row>
     </MainLayout>
   );
