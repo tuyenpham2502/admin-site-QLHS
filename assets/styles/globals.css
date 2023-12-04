@@ -146,6 +146,18 @@ a {
   
 }
 
+
+.ant-layout .ant-layout-sider {
+  background-color: #131720;
+}
+
+.ant-menu-dark {
+  background-color: #131720;
+}
+.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+  background-color: rgba(47,128,237,0.1);
+}
+
 .app-button {
   border-radius: 16px;
   font-size: 14px;
