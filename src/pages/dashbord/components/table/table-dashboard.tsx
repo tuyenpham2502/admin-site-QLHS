@@ -113,6 +113,7 @@ const DashboardTable = (props: Props) => {
         dataSource={data || []}
         loading={isLoading}
         pagination={false}
+        scroll={{ x: true}}
       />
     </div>
   );
