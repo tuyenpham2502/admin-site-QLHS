@@ -20,9 +20,11 @@ import {
 } from "src/infrastructure/identity/account/effect/sigInWithEmail";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
 import Constant from "src/core/application/common/constants";
+import LoggerService from "src/infrastructure/services/LoggerService";
 
 const SignInPage = (context) => {
   const { t } = useTranslation("common");
+  const loggerService = new LoggerService();
   const router = useRouter();
   let localStorage = new LocalStorageService();
   let storage = localStorage.readStorage(Constant.API_TOKEN_STORAGE);
@@ -124,7 +126,7 @@ const SignInPage = (context) => {
     if (isValidateData()) {
       let res = await signInWithEmailAsync(user.email, user.password, context);
       if (res && res.status == 200) {
-        await getMyProfileAsync(t, context, router, setIsLoading);
+        await getMyProfileAsync(t, context, router,loggerService, setIsLoading);
       }
     }
   };

@@ -15,6 +15,7 @@ import {
   UserIdState,
 } from "src/core/application/common/atoms/identity/account/ProfileState";
 import { notifyInfo } from "src/infrastructure/common/components/controls/toast/toast-message";
+import InvalidModelStateResponse from "src/core/application/dto/common/responses/InvalidModelStateResponse";
 
 export const signInWithEmailAsync = async (
   email: string,
@@ -39,7 +40,7 @@ export const getMyProfileAsync = async (
   t: any,
   cookie: Cookie,
   router: NextRouter,
-  // loggerService: LoggerService,
+  loggerService: LoggerService,
   setLoading: Function
 ) => {
   try {
@@ -77,16 +78,13 @@ export const getMyProfileAsync = async (
         setLoading(false);
       }, 300);
     }
-    return response;
-    }
-    if(response.status == 401) {
-      localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(false, "", ""));
-      router.push("/account/sign-in.html");
-      setTimeout(() => {
+     if (response.constructor.name == InvalidModelStateResponse.name) {
         setLoading(false);
-      }, 300);
+        loggerService.info((response as InvalidModelStateResponse).errors);
     }
-
+  }
+  return response;
+  
   } catch (e) {
     throw e;
   }
