@@ -1,6 +1,5 @@
 .header_main_layout_background {
-    height: 70px;
-    padding: 0px 25px !important;
+    padding: 8px 25px !important;
     line-height: 50px;
     border-radius: 3px;
     background-color: #151f30;
@@ -8,13 +7,16 @@
 .header_main_layout_background .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+}
 
+.header_main_layout_background .header_left {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .header_main_layout_background .header_logo{
-    cursor: pointer;
-    padding-top: 10px;
+    float: left;
 }
 
 .header_main_layout_background .header_collapse {

@@ -5,9 +5,10 @@
     justify-content: center;
 }
 
-.content_sign_in .logo {
+.content_sign_in .logo_wrapper {
     margin-bottom: 20px;
     justify-content: center;
+    align-items: center;
 }
 
 

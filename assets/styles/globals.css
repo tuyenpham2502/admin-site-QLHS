@@ -146,6 +146,24 @@ a {
   
 }
 
+.wed-name{
+    font-family: "italic";
+    float: left;
+    font-weight: 300;
+    font-size: 21px;
+    color: #fff;
+    padding-left: 6px;
+}
+
+.wed-name-sign-in{
+    font-family: "italic";
+    float: left;
+    font-weight: 300;
+    font-size: 28px;
+    color: #fff;
+    padding-left: 6px;
+}
+
 
 .ant-layout .ant-layout-sider {
   background-color: #131720;
