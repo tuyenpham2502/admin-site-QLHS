@@ -9,6 +9,7 @@
     padding-top: 0.1px;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid rgba(47,128,237,0.1);
 }
 /* 
 .layout_left_menu .left_menu_item {
@@ -21,6 +22,8 @@
 
 .layout_left_menu_sider_children .left_menu_profile_wrapper {
     padding: 20px 20px;
+    border-bottom: 1px solid rgba(47,128,237,0.1);
+    margin-bottom: 20px;
 }
 
 .layout_left_menu_sider_children .left_menu_avatar {
@@ -91,5 +94,15 @@
 }
 
 .layout_left_menu .left_menu_logo {
-    padding: 6px 0;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(47,128,237,0.1);
+
+    
+}
+
+.left_menu_logo_image {
+    float: left;
+    
 }

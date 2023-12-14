@@ -53,6 +53,12 @@ const getMyProfileAsync = async (
     }, 0);
   }
 
+  else if(response.status == 401){
+    setLoading(false);
+    loggerService.info((response as InvalidModelStateResponse).errors);
+    
+  }
+
   if (response.constructor.name == InvalidModelStateResponse.name) {
     setLoading(false);
     loggerService.info((response as InvalidModelStateResponse).errors);
@@ -66,13 +72,14 @@ const MainLayout = ({ context, translator, ...props }: any) => {
   let localStorage = new LocalStorageService();
   let storage = localStorage.readStorage(Constant.API_TOKEN_STORAGE);
   const loggerService = new LoggerService();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log("storage.isAuthenticated", storage.isAuthenticated);
     if (!storage.isAuthenticated) {
       router.push("/account/sign-in.html");
     }
-  }, [router, storage]);
+  }, [storage.isAuthenticated]);
 
  
   const getMyProfile = async () => {
@@ -94,9 +101,9 @@ const MainLayout = ({ context, translator, ...props }: any) => {
 
   return (
     <Layout className={styles.qlhs_main_layout}>
-      <LeftMenu context={context} translator={translator} isHiddenLeftMenu={isHiddenLeftMenu} setIsHiddenLeftMenu={setIsHiddenLeftMenu} />
+      <LeftMenu context={context} translator={translator} isHiddenLeftMenu={isHiddenLeftMenu} setIsHiddenLeftMenu={setIsHiddenLeftMenu}  />
       <Layout className={styles.qlhs_main_content}>
-        <Header context={context} translator={translator} isHidden={isHiddenLeftMenu} setIsHidden={setIsHiddenLeftMenu} />
+        <Header context={context} translator={translator} isHidden={isHiddenLeftMenu} setIsHidden={setIsHiddenLeftMenu}  />
         <Content context={context} translator={translator}>
           {props.children}
         </Content>

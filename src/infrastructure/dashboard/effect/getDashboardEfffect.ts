@@ -21,13 +21,6 @@ export const getTopFilmsAsync = async (
     setLoading(false);
     return response;
     }
-    // if(response.status == 401) {
-    //   localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(false, "", ""));
-    //   router.push("/account/sign-in.html");
-    //   setTimeout(() => {
-    //     setLoading(false);
-    //   }, 300);
-    // }
   } catch (e) {
     throw e;
   }

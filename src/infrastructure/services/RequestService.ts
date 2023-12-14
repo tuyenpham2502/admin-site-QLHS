@@ -90,6 +90,7 @@ export default class RequestService implements IRequestService {
           Constants.API_TOKEN_STORAGE,
           new Cookie(false, "", "")
         );
+        window.location.href = "/account/sign-in.html";
       }
       // this.loggerService.error(e);
       return new FailureResponse(e.response?.errors || e.errors);
@@ -126,6 +127,7 @@ export default class RequestService implements IRequestService {
           Constants.API_TOKEN_STORAGE,
           new Cookie(false, "", "")
         );
+        window.location.href = "/account/sign-in.html";
       }
 
       return new FailureResponse(e.response?.errors || e.errors);

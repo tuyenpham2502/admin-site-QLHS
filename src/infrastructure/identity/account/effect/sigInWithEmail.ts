@@ -61,6 +61,7 @@ export const getMyProfileAsync = async (
         setRecoilStateAsync(ProfileState, {
           data: {},
         });
+        router.push("/account/sign-in.html");
       } else {
         setRecoilStateAsync(ProfileState, {
           data: (response as SuccessResponse)?.data.getMyProfile.user,

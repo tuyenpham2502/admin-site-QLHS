@@ -12,7 +12,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { MenuKeys } from "src/core/domain/enums/MenuKeys";
 import { Button, Col, Divider, Row } from "antd";
-import { NextSeo } from "next-seo";
 import StatItem from "src/pages/dashbord/components/items/stat-item";
 import styles from "assets/styles/pages/dashboard/dashboard.module.css";
 import TableItem from "src/pages/dashbord/components/items/table-item";
@@ -40,7 +39,6 @@ const DashBoardPage = ({ context }) => {
 
   return (
     <>
-      <NextSeo title="Dashbord" description="Dashbord" />
       <Row justify={"space-between"} align={"middle"} className={"header-page"}>
             <Col className="page-name">
                 Dashboard

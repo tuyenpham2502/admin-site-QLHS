@@ -1,8 +1,8 @@
 import React, { use, useState } from "react";
-import logo from "assets/images/logo.svg";
+import logo from "assets/images/logo.png";
 import { LogoutOutlined } from "@ant-design/icons";
-import { Layout, Col, Row } from "antd";
-import { useRouter } from "next/router";
+import { Layout, Col, Row, Drawer } from "antd";
+import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
 import {
   MenuUI,
@@ -16,9 +16,33 @@ import styles from "assets/styles/common/layout/LeftMenu.module.css";
 import GroupedMenuItem from "src/core/application/common/models/LeftMenu/GroupedItem";
 import { useRecoilValue } from "recoil";
 import { ProfileState } from "src/core/application/common/atoms/identity/account/ProfileState";
+import { AccountManagementService } from "src/infrastructure/identity/account/service/AccountManagementService";
+import Endpoint from "src/core/application/common/Endpoint";
+
+const LogoutAsync = async (
+  context: any,
+  params: any,
+  router: NextRouter,
+  setIsLoading: Function
+) => {
+  try {
+    let response = await new AccountManagementService().logoutAsync(
+      Endpoint.AccountManagement.logout,
+      {},
+      context
+    );
+    if (response.status == 200) {
+      router.push("/account/sign-in.html");
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }: any) => {
   const router = useRouter();
   const [openKeys, setOpenKeys] = useState(context?.openKeys);
+  const [isLoading, setIsLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const root = Constant.MenuConfig.MainMenu;
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -35,7 +59,9 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
     }
   };
 
-  console.log("myProfileRef", myProfileRef);
+  const signOut = async () => {
+    await LogoutAsync(context, {}, router, setIsLoading);
+  };
 
   return (
     <Layout.Sider
@@ -55,9 +81,11 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
           <Image
             src={logo}
             alt="logo"
-            width={collapsed ? 80 : 160}
-            height={collapsed ? 60 : 80}
+            className={styles.left_menu_logo_image}
           />
+          <div className={"wed-name"}>
+            My film
+          </div>
         </div>
         {myProfileRef && (
           <Row className={styles.left_menu_profile_wrapper}>
@@ -78,7 +106,7 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
                     {myProfileRef?.data?.name}
                   </div>
                 </Col>
-                <Col className={styles.button_logout}>
+                <Col className={styles.button_logout} onClick={signOut}>
                   <LogoutOutlined className={styles.icon_logout} />
                 </Col>
               </>
@@ -136,6 +164,58 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
           </MenuUI>
         </div>
       </div>
+        <Layout.Sider
+          width={280}
+        >
+        <MenuUI
+            theme={root.theme}
+            mode={root.mode}
+            defaultSelectedKeys={context?.defaultSelectedKeys}
+            openKeys={openKeys}
+            onOpenChange={onOpenChange}
+          >
+            {root.items?.map((value: any) => {
+              if (value.type === "item") {
+                const item = value as MenuItem;
+                return (
+                  <MenuItemUI
+                    key={item.key}
+                    icon={item.icon}
+                    onClick={() => {
+                      router.push(item.hyperlink);
+                    }}
+                  >
+                    {item.displayText}
+                  </MenuItemUI>
+                );
+              } else if (value.type === "group") {
+                const item = value as GroupedMenuItem;
+                return (
+                  <SubMenuUI
+                    key={item.key}
+                    icon={item.icon}
+                    title={item.displayText}
+                  >
+                    {item.items?.map((sValue: any) => {
+                      const item = sValue as MenuItem;
+                      return (
+                        <MenuItemUI
+                          key={item.key}
+                          icon={item.icon}
+                          onClick={() => {
+                            router.push(item.hyperlink);
+                          }}
+                        >
+                          {item.displayText}
+                        </MenuItemUI>
+                      );
+                    })}
+                  </SubMenuUI>
+                );
+              }
+            })}
+          </MenuUI>
+          </Layout.Sider>
     </Layout.Sider>
   );
 };

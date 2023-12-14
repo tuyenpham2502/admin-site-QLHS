@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "assets/styles/pages/account/sign-in.module.css";
 import {FacebookFilled} from "@ant-design/icons";
 import loginBackground from "assets/images/login_background.jpg";
-import logo from "assets/images/logo.svg";
+import logo from "assets/images/logo.png";
 import { Input, Button, Row, Col, Checkbox } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -136,8 +136,9 @@ const SignInPage = (context) => {
       <NextSeo title={"Sign In"} />
       <Row className={styles.content_sign_in}>
         <div className={styles.sign_in_wrapper}>
-          <Row className={styles.logo}>
-            <Image src={logo} className={styles.logo} width={80} alt={"logo"} />
+          <Row className={styles.logo_wrapper}>
+            <Image src={logo} className={styles.logo} height={40}  alt={"logo"} />
+            <div className="wed-name-sign-in">My film</div>
           </Row>
           <Row className={styles.input_wrapper}>
             <Input
