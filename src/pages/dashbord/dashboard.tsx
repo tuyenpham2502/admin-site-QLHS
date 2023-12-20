@@ -115,7 +115,7 @@ const DashBoardPage = ({ context }) => {
             isLoading={isLoading}
           />
         </Col>
-        <Col xxl={12} xl={12} lg={24} md={24} sm={24} xs={24}>
+        {/* <Col xxl={12} xl={12} lg={24} md={24} sm={24} xs={24}>
           <TableItem
             title="Latest reviews"
             icon={<StarOutlined className={styles.table_icon} />}
@@ -123,7 +123,7 @@ const DashBoardPage = ({ context }) => {
             type={Constant.DashBoardTableItemsType.LatestReviews}
             isLoading={isLoading}
           />
-        </Col>
+        </Col> */}
       </Row>
     </>
   );
