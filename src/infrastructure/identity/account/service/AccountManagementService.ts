@@ -22,7 +22,8 @@ export class AccountManagementService implements IAccountManagementService {
         try {
             let result = await new RequestService().makePostRequestAsync(endpoint, params, cookie);
             if(result.status == 200) {
-                this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(true, (result as SuccessResponse).data.signInWithEmail.token, (result as SuccessResponse).data.signInWithEmail.refreshToken));
+                console.log(result);
+                this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(true, (result as SuccessResponse).data.token, (result as SuccessResponse).data.refreshToken));
                 return result as SuccessResponse ;
             }
             if(result.status == 201) {

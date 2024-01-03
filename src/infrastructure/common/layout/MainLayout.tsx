@@ -36,16 +36,17 @@ const getMyProfileAsync = async (
     {},
     cookie
   );
+    console.log(response);
   if (response.status == 200) {
     setRecoilStateAsync(ProfileState, {
-      data: (response as SuccessResponse)?.data.getMyProfile.user,
+      data: (response as SuccessResponse)?.data,
     });
     setRecoilStateAsync(UserIdState, {
-      data: (response as SuccessResponse)?.data.getMyProfile.user.userId,
+      data: (response as SuccessResponse)?.data.id,
     });
 
-    setRecoilStateAsync(RolesState, {
-      data: (response as SuccessResponse)?.data.getMyProfile.user.role,
+    setRecoilStateAsync(RolesState, {   
+      data: (response as SuccessResponse)?.data.roles,
     });
 
     setTimeout(() => {
@@ -75,7 +76,6 @@ const MainLayout = ({ context, translator, ...props }: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("storage.isAuthenticated", storage.isAuthenticated);
     if (!storage.isAuthenticated) {
       router.push("/account/sign-in.html");
     }

@@ -100,10 +100,10 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
               <>
                 <Col className={styles.left_menu_profile}>
                   <div className={styles.left_menu_profile_role_text}>
-                    {myProfileRef?.data?.role[0]}
+                    {myProfileRef?.data?.roles[0]}
                   </div>
                   <div className={styles.left_menu_profile_name_text}>
-                    {myProfileRef?.data?.name}
+                    {myProfileRef?.data?.firstName} {myProfileRef?.data?.lastName}
                   </div>
                 </Col>
                 <Col className={styles.button_logout} onClick={signOut}>
