@@ -52,17 +52,17 @@ export const getMyProfileAsync = async (
     );
     if (response.status == 200) {
       let arrRoles = (response as SuccessResponse)?.data.getMyProfile.user.role;
-      if (arrRoles[0].toUpperCase() == Roles.User) {
-        notifyInfo(t,"Bạn không có quyền truy cập vào trang này");
-        localStorageService.setStorage(
-          Constant.API_TOKEN_STORAGE,
-          new Cookie(false, "", "")
-        );
-        setRecoilStateAsync(ProfileState, {
-          data: {},
-        });
-        router.push("/account/sign-in.html");
-      } else {
+      // if (arrRoles[0].toUpperCase() == Roles.User) {
+      //   notifyInfo(t,"Bạn không có quyền truy cập vào trang này");
+      //   localStorageService.setStorage(
+      //     Constant.API_TOKEN_STORAGE,
+      //     new Cookie(false, "", "")
+      //   );
+      //   setRecoilStateAsync(ProfileState, {
+      //     data: {},
+      //   });
+      //   router.push("/account/sign-in.html");
+      // } else {
         setRecoilStateAsync(ProfileState, {
           data: (response as SuccessResponse)?.data.getMyProfile.user,
         });
@@ -78,7 +78,7 @@ export const getMyProfileAsync = async (
         setTimeout(() => {
         setLoading(false);
       }, 300);
-    }
+    // }
      if (response.constructor.name == InvalidModelStateResponse.name) {
         setLoading(false);
         loggerService.info((response as InvalidModelStateResponse).errors);

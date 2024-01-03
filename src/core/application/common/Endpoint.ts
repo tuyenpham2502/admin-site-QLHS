@@ -2,7 +2,7 @@ export default class Endpoint {
 
     static AccountManagement = class {
         static signInWithEmail = 'Accounts/SignIn'
-        static getMyProfile = 'users/me'
+        static getMyProfile = 'Users/UserProfiles'
         static logout = 'auth/logout'
     }
 
