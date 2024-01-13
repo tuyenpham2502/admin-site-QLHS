@@ -2,7 +2,7 @@ import { Spin, Table } from "antd";
 import { ColumnType } from "antd/es/table";
 import { StarOutlined } from "@ant-design/icons";
 import styles from "assets/styles/pages/dashboard/dashboard.module.css";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 
 interface DataType {
   id: string;

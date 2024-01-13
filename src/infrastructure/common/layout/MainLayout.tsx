@@ -5,7 +5,7 @@ import Header from "src/infrastructure/common/layout/Header";
 import Content from "src/infrastructure/common/layout/Content";
 import styles from "assets/styles/common/layout/MainLayout.module.css";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 import { NextRouter, useRouter } from "next/router";
 import { FullPageLoading } from "../components/controls/loading";
 import Cookie from "src/core/application/common/models/Cookie";
