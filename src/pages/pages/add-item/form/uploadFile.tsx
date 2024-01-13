@@ -10,7 +10,7 @@ type Props = {
   context: any;
 };
 
-export const UploadFile = (props: Props) => {
+const UploadFile = (props: Props) => {
   const { context } = props;
   const { t } = useTranslation("common");
   const loggerService = new LoggerService();
@@ -18,7 +18,6 @@ export const UploadFile = (props: Props) => {
   const [isUpload, setIsUpload] = useState();
   const BaseUrlImage = Constant.BaseUrlImage;
 
-  console.log(context);
 
   const handleChange = async (file) => {
     await uploadFileAsync(
@@ -52,3 +51,5 @@ export const UploadFile = (props: Props) => {
     </Upload>
   );
 };
+
+export default UploadFile;

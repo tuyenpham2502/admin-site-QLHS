@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { MenuKeys } from "src/core/domain/enums/MenuKeys";
 import MainLayout from "src/infrastructure/common/layout/MainLayout";
 import styles from "assets/styles/pages/pages/add-item.module.css"
-import { UploadFile } from "./form/uploadFile";
+import UploadFile from "./form/uploadFile";
 
 
 const AddItem = (context) => {
