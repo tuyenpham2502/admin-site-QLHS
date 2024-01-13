@@ -19,7 +19,7 @@ import {
   signInWithEmailAsync,
 } from "src/infrastructure/identity/account/effect/sigInWithEmail";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 import LoggerService from "src/infrastructure/services/LoggerService";
 import { FullPageLoading } from "src/infrastructure/common/components/controls/loading";
 

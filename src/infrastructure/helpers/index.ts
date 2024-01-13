@@ -1,4 +1,4 @@
-import Constant from "src/core/application/common/Constants"
+import Constant from "src/core/application/common/constants"
 import MessageErrors from "src/core/application/common/MessageError";
 
 

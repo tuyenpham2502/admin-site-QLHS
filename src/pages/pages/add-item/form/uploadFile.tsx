@@ -4,7 +4,7 @@ import styles from "assets/styles/pages/pages/add-item.module.css";
 import { uploadFileAsync } from "src/infrastructure/upload/effect/UploadFileEffect";
 import { useTranslation } from "react-i18next";
 import LoggerService from "src/infrastructure/services/LoggerService";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 
 type Props = {
   context: any;

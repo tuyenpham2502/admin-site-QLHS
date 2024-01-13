@@ -2,7 +2,7 @@ import { Col, Row, Table, Tag } from "antd";
 import { ReloadOutlined } from "@ant-design/icons";
 import styles from "assets/styles/pages/dashboard/dashboard.module.css";
 import DashboardTable from "../table/table-dashboard";
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 type Props = {
   title: string;
   icon?: any;

@@ -1,4 +1,4 @@
-import Constant from "src/core/application/common/Constants";
+import Constant from "src/core/application/common/constants";
 import NetworkException from "src/core/application/common/exceptions/NetworkException";
 import Cookie from "src/core/application/common/models/Cookie";
 import FailureResponse from "src/core/application/dto/common/responses/FailureResponse";
