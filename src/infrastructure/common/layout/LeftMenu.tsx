@@ -18,6 +18,7 @@ import { useRecoilValue } from "recoil";
 import { ProfileState } from "src/core/application/common/atoms/identity/account/ProfileState";
 import { AccountManagementService } from "src/infrastructure/identity/account/service/AccountManagementService";
 import Endpoint from "src/core/application/common/Endpoint";
+import { FullPageLoading } from "../components/controls/loading";
 
 const LogoutAsync = async (
   context: any,
@@ -26,12 +27,14 @@ const LogoutAsync = async (
   setIsLoading: Function
 ) => {
   try {
+    setIsLoading(true);
     let response = await new AccountManagementService().logoutAsync(
       Endpoint.AccountManagement.logout,
       {},
       context
     );
     if (response.status == 200) {
+      setIsLoading(false);
       router.push("/account/sign-in.html");
     }
   } catch (error) {
@@ -216,6 +219,7 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
             })}
           </MenuUI>
           </Layout.Sider>
+          <FullPageLoading isLoading={isLoading} />
     </Layout.Sider>
   );
 };
