@@ -1,4 +1,4 @@
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 import NetworkException from "src/core/application/common/exceptions/NetworkException";
 import Cookie from "src/core/application/common/models/Cookie";
 import FailureResponse from "src/core/application/dto/common/responses/FailureResponse";
@@ -21,12 +21,12 @@ export class AccountManagementService implements IAccountManagementService {
     public async signInWithEmailAsync(endpoint: string, params: any, cookie: Cookie): Promise<RequestResponse> {
         try {
             let result = await new RequestService().makePostRequestAsync(endpoint, params, cookie);
+            console.log(result);
             if(result.status == 200) {
-                console.log(result);
                 this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(true, (result as SuccessResponse).data.token, (result as SuccessResponse).data.refreshToken));
                 return result as SuccessResponse ;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             if(result.status == 400) {
@@ -45,7 +45,7 @@ export class AccountManagementService implements IAccountManagementService {
             if(result.status == 200) {
                 return result as SuccessResponse;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             throw new NetworkException('No http status code handler');
@@ -63,7 +63,7 @@ export class AccountManagementService implements IAccountManagementService {
                 this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(false, "", ""));
                 return result as SuccessResponse;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             throw new NetworkException('No http status code handler');

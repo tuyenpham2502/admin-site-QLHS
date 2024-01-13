@@ -19,8 +19,9 @@ import {
   signInWithEmailAsync,
 } from "src/infrastructure/identity/account/effect/sigInWithEmail";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 import LoggerService from "src/infrastructure/services/LoggerService";
+import { FullPageLoading } from "src/infrastructure/common/components/controls/loading";
 
 const SignInPage = (context) => {
   const { t } = useTranslation("common");
@@ -124,7 +125,7 @@ const SignInPage = (context) => {
 
   const handleSubmit = async (event: any) => {
     if (isValidateData()) {
-      let res = await signInWithEmailAsync(user.email, user.password, context);
+      let res = await signInWithEmailAsync(t, user.email, user.password, context, setIsLoading);
       if (res && res.status == 200) {
         await getMyProfileAsync(t, context, router,loggerService, setIsLoading);
       }
@@ -177,6 +178,7 @@ const SignInPage = (context) => {
           </Row>
         </div>
       </Row>
+      <FullPageLoading isLoading={isLoading} />
     </>
   );
 };

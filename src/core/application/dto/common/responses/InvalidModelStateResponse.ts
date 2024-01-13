@@ -1,7 +1,7 @@
 import {RequestResponse} from "./RequestResponse";
 
 export default class InvalidModelStateResponse extends RequestResponse{
-    status: number = 401;
+    status: number = 400;
     errors: any = {};
 
     constructor(errors: any) {

@@ -1,5 +1,5 @@
 import { setRecoilStateAsync } from "./../common/libs/recoil-outside/Service";
-import Constants from "src/core/application/common/constants";
+import Constants from "src/core/application/common/Constants";
 import { IRequestService } from "src/core/application/services/IRequestService";
 import LoggerService from "src/infrastructure/services/LoggerService";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
@@ -45,7 +45,7 @@ export default class RequestService implements IRequestService {
   private processRequest(response: AxiosResponse): RequestResponse {
     try {
       if (response.status == 200) {
-        return new SuccessResponse(response.statusText, response.data);
+        return new SuccessResponse(response.data.message, response.data.data);
       }
       if (response.status == 202) {
         return new FailureResponse(response.data.errors);
@@ -73,13 +73,11 @@ export default class RequestService implements IRequestService {
             .map((key) => `${key}=${encodeURIComponent(params[key])}`)
             .join("&")
         : "";
-      const _url = `${this.baseURL}/api/${url}${
+      const _url = `${this.baseURL}/${url}${
         _params === "" ? "" : "?" + _params
       }`;
       const _options = this.getOptions(context);
-      return this.processRequest(
-        await axios.get(_url, this.getOptions(context))
-      );
+      return this.processRequest(await axios.get(_url, _options));
     } catch (e) {
       if (
         e.response?.status == 400 ||
@@ -92,7 +90,7 @@ export default class RequestService implements IRequestService {
         );
         window.location.href = "/account/sign-in.html";
       }
-      // this.loggerService.error(e);
+      this.loggerService.error(e);
       return new FailureResponse(e.response?.errors || e.errors);
     } finally {
       await setRecoilStateAsync(LoadingState, { isLoading: false, uri: "" });
@@ -106,7 +104,7 @@ export default class RequestService implements IRequestService {
   ): Promise<RequestResponse> {
     //const setIsLoading = useSetRecoilState(LoadingState);
     try {
-      const _url = `${this.baseURL}/api/${endpoint}`;
+      const _url = `${this.baseURL}/${endpoint}`;
       await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url });
       const _params = JSON.stringify(params);
       const _options = this.getOptions(context, false);
@@ -114,10 +112,9 @@ export default class RequestService implements IRequestService {
       _options.headers["accept"] = "text/xml";
       return this.processRequest(await axios.post(_url, _params, _options));
     } catch (e) {
-      
       // this.loggerService.error(e);
       // throw e;
-      
+
       if (
         e.response?.status == 400 ||
         e.response?.status == 401 ||
@@ -147,7 +144,7 @@ export default class RequestService implements IRequestService {
             .map((key) => `${key}=${encodeURIComponent(params[key])}`)
             .join("&")
         : "";
-      const _url = `${this.baseURL}/api/${url}${
+      const _url = `${this.baseURL}/${url}${
         _params === "" ? "" : "?" + _params
       }`;
       const _options = this.getOptions(context);
@@ -155,7 +152,7 @@ export default class RequestService implements IRequestService {
         await axios.get(_url, this.getOptions(context, true))
       );
     } catch (e) {
-      // this.loggerService.error(e);
+      this.loggerService.error(e);
       return new FailureResponse(e.response?.errors || e.errors);
     } finally {
       await setRecoilStateAsync(LoadingState, { isLoading: false, uri: "" });
@@ -173,7 +170,7 @@ export default class RequestService implements IRequestService {
       const _url = `${this.baseURL}/${endpoint}`;
       await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url });
       const _form = new FormData();
-      _form.append("file", file);
+      _form.append("File", file);
       const _options = this.getOptions(context);
       _options.headers["Content-Type"] = "multipart/form-data";
       return this.processRequest(
@@ -196,7 +193,7 @@ export default class RequestService implements IRequestService {
   ): Promise<RequestResponse> {
     //const setIsLoading = useSetRecoilState(LoadingState);
     try {
-      const _url = `${this.baseURL}/api/${endpoint}`;
+      const _url = `${this.baseURL}/${endpoint}`;
       await setRecoilStateAsync(LoadingState, { isLoading: true, uri: _url });
       const _params = JSON.stringify(params);
       const _options = this.getOptions(context);

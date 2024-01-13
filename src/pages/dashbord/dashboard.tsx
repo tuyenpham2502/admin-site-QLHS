@@ -16,7 +16,7 @@ import StatItem from "src/pages/dashbord/components/items/stat-item";
 import styles from "assets/styles/pages/dashboard/dashboard.module.css";
 import TableItem from "src/pages/dashbord/components/items/table-item";
 import { getTopFilmsAsync } from "src/infrastructure/dashboard/effect/getDashboardEfffect";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 
 const DashBoardPage = ({ context }) => {
   const router = useRouter();
