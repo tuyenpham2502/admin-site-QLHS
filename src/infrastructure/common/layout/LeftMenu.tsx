@@ -11,7 +11,7 @@ import {
 } from "src/infrastructure/common/components/menu/menu";
 import { MenuSubKeys } from "src/core/domain/enums/MenuKeys";
 import MenuItem from "src/core/application/common/models/LeftMenu/MenuItem";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 import styles from "assets/styles/common/layout/LeftMenu.module.css";
 import GroupedMenuItem from "src/core/application/common/models/LeftMenu/GroupedItem";
 import { useRecoilValue } from "recoil";
@@ -45,9 +45,9 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
   const [isLoading, setIsLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const root = Constant.MenuConfig.MainMenu;
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const myProfileRef = useRecoilValue<any>(ProfileState);
-
+  const baseUrl = Constant.BaseUrlImage;
+  
   const onOpenChange = (keys: any) => {
     const latestOpenKey = keys.find(
       (key: any) => openKeys?.indexOf(key) === -1
@@ -91,7 +91,7 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
           <Row className={styles.left_menu_profile_wrapper}>
             <Col>
               <img
-                src={`${baseUrl}/FileStorage/${myProfileRef?.data?.avatar}`}
+                src={baseUrl + myProfileRef?.data.avatar}
                 className={styles.left_menu_avatar}
                 alt="Avatar"
               />
@@ -100,10 +100,10 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
               <>
                 <Col className={styles.left_menu_profile}>
                   <div className={styles.left_menu_profile_role_text}>
-                    {myProfileRef?.data?.roles[0]}
+                    {myProfileRef?.data.roles[0]}
                   </div>
                   <div className={styles.left_menu_profile_name_text}>
-                    {myProfileRef?.data?.firstName} {myProfileRef?.data?.lastName}
+                    {myProfileRef?.data.firstName} {myProfileRef?.data?.lastName}
                   </div>
                 </Col>
                 <Col className={styles.button_logout} onClick={signOut}>

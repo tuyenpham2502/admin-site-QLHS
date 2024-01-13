@@ -16,7 +16,6 @@ const Header = ({
   isHiddenMenuMobile,
   ...props
 }: any) => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [textSearch, setTextSearch] = useState("");
 
   

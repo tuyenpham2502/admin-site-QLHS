@@ -8,28 +8,43 @@ import LocalStorageService from "src/infrastructure/services/LocalStorageService
 import SuccessResponse from "src/core/application/dto/common/responses/SuccessResponse";
 import { Roles } from "src/core/domain/enums/Roles";
 import { setRecoilStateAsync } from "src/infrastructure/common/libs/recoil-outside/Service";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 import {
   ProfileState,
   RolesState,
   UserIdState,
 } from "src/core/application/common/atoms/identity/account/ProfileState";
-import { notifyInfo } from "src/infrastructure/common/components/controls/toast/toast-message";
+import {
+  notifyError,
+  notifyInfo,
+} from "src/infrastructure/common/components/controls/toast/toast-message";
 import InvalidModelStateResponse from "src/core/application/dto/common/responses/InvalidModelStateResponse";
+import FailureResponse from "src/core/application/dto/common/responses/FailureResponse";
+import { filterError } from "src/infrastructure/helpers";
 
 export const signInWithEmailAsync = async (
+  translator: any,
   email: string,
   password: string,
-  cookie: Cookie
+  cookie: Cookie,
+  setLoading: Function
 ) => {
   try {
+    setLoading(true);
     let response = await new AccountManagementService().signInWithEmailAsync(
       Endpoint.AccountManagement.signInWithEmail,
       new SignInWithEmailRequest(email, password),
       cookie
     );
     if (response.status == 200) {
-      return response;
+      return (response as SuccessResponse).data;
+    }
+
+    if (response.status == 202) {
+      setLoading(false);
+      let errors = (response as FailureResponse).errors;
+      if (errors != null && errors.length > 0)
+        notifyError(translator, filterError(errors));
     }
   } catch (e) {
     throw e;
@@ -52,17 +67,17 @@ export const getMyProfileAsync = async (
     );
     if (response.status == 200) {
       let arrRoles = (response as SuccessResponse)?.data.getMyProfile.user.role;
-      // if (arrRoles[0].toUpperCase() == Roles.User) {
-      //   notifyInfo(t,"Bạn không có quyền truy cập vào trang này");
-      //   localStorageService.setStorage(
-      //     Constant.API_TOKEN_STORAGE,
-      //     new Cookie(false, "", "")
-      //   );
-      //   setRecoilStateAsync(ProfileState, {
-      //     data: {},
-      //   });
-      //   router.push("/account/sign-in.html");
-      // } else {
+      if (arrRoles[0].toUpperCase() == Roles.User) {
+        notifyInfo(t, "Bạn không có quyền truy cập vào trang này");
+        localStorageService.setStorage(
+          Constant.API_TOKEN_STORAGE,
+          new Cookie(false, "", "")
+        );
+        setRecoilStateAsync(ProfileState, {
+          data: {},
+        });
+        router.push("/account/sign-in.html");
+      } else {
         setRecoilStateAsync(ProfileState, {
           data: (response as SuccessResponse)?.data.getMyProfile.user,
         });
@@ -76,16 +91,22 @@ export const getMyProfileAsync = async (
 
         router.push("/");
         setTimeout(() => {
-        setLoading(false);
-      }, 300);
-    // }
-     if (response.constructor.name == InvalidModelStateResponse.name) {
-        setLoading(false);
-        loggerService.info((response as InvalidModelStateResponse).errors);
+          setLoading(false);
+        }, 300);
+      }
     }
-  }
-  return response;
-  
+
+    if (response.status == 202) {
+      setLoading(false);
+      let errors = (response as FailureResponse).errors;
+      if (errors != null && errors.length > 0)
+        notifyError(t, filterError(errors));
+    }
+    if (response.constructor.name == InvalidModelStateResponse.name) {
+      setLoading(false);
+      loggerService.info((response as InvalidModelStateResponse).errors);
+    }
+    return response;
   } catch (e) {
     throw e;
   }

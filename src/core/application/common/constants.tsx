@@ -15,6 +15,8 @@ import GroupedMenuItem from "./models/LeftMenu/GroupedItem";
 export default class Constant {
     static API_TOKEN_STORAGE: string = "API_TOKEN";
 
+    static BaseUrlImage: string = `${process.env.NEXT_PUBLIC_API_URL}/FileStorage/GetFile`;
+
     static ToastMessage = class {
         static Notification = class {
             static Position: NotificationPlacement = "topRight";

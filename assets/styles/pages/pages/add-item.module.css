@@ -1,0 +1,16 @@
+.add_item_form {
+    padding: 20px;
+    border: 1px solid rgba(47, 128, 237, 0.1);
+    border-radius: 16px;
+    margin-top: 30px;
+}
+
+.upload_file {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #151f30;
+    border-radius: 16px;
+    width: 100%;
+}

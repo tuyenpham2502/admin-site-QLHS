@@ -23,7 +23,7 @@ export class DashboardManagementService implements IDashboardManagementService {
             if(result.status == 200) {
                 return result as SuccessResponse ;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             if(result.status == 400) {
@@ -42,7 +42,7 @@ export class DashboardManagementService implements IDashboardManagementService {
             if(result.status == 200) {
                 return result as SuccessResponse ;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             if(result.status == 400) {
@@ -61,7 +61,7 @@ export class DashboardManagementService implements IDashboardManagementService {
             if(result.status == 200) {
                 return result as SuccessResponse ;
             }
-            if(result.status == 201) {
+            if(result.status == 202) {
                 return result as FailureResponse;
             }
             if(result.status == 400) {

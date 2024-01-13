@@ -1,11 +1,11 @@
 import {RequestResponse} from "./RequestResponse";
 
 export default class FailureResponse extends RequestResponse{
-    status: number = 201;
-    errors: string = '';
+    status: number = 202;
+    errors: Array<ErrorItem> = [];
 
-    constructor(errors: string) {
-        super(201);
+    constructor(errors: Array<ErrorItem>) {
+        super(202);
         this.errors = errors;
     }
 
@@ -14,5 +14,5 @@ export default class FailureResponse extends RequestResponse{
 export class ErrorItem {
     fieldName: string = '';
     message: string = '';
-    extensions: any;
+    code : number = 0;
 }

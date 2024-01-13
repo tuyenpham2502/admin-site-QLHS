@@ -9,7 +9,7 @@ import styles from "assets/styles/pages/catalog/list.module.css";
 import { formatTotalCatalog } from "src/infrastructure/helpers";
 import CatalogTable from "../comments/table/table-catalog";
 import { getTopFilmsAsync } from "src/infrastructure/dashboard/effect/getDashboardEfffect";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 
 const CatalogPage = (context) => {
   const [isLoading, setIsLoading] = useState(false);

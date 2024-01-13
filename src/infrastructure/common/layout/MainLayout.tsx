@@ -5,7 +5,7 @@ import Header from "src/infrastructure/common/layout/Header";
 import Content from "src/infrastructure/common/layout/Content";
 import styles from "assets/styles/common/layout/MainLayout.module.css";
 import LocalStorageService from "src/infrastructure/services/LocalStorageService";
-import Constant from "src/core/application/common/constants";
+import Constant from "src/core/application/common/Constants";
 import { NextRouter, useRouter } from "next/router";
 import { FullPageLoading } from "../components/controls/loading";
 import Cookie from "src/core/application/common/models/Cookie";
@@ -21,12 +21,16 @@ import { setRecoilStateAsync } from "../libs/recoil-outside/Service";
 import dynamic from "next/dynamic";
 import LoggerService from "src/infrastructure/services/LoggerService";
 import InvalidModelStateResponse from "src/core/application/dto/common/responses/InvalidModelStateResponse";
+import { notifyError } from "../components/controls/toast/toast-message";
+import { filterError } from "src/infrastructure/helpers";
+import FailureResponse from "src/core/application/dto/common/responses/FailureResponse";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("./LeftMenu"), {
   ssr: false,
 });
 
 const getMyProfileAsync = async (
+  translator: any,
   cookie: Cookie,
   loggerService: LoggerService,
   setLoading: Function
@@ -36,7 +40,6 @@ const getMyProfileAsync = async (
     {},
     cookie
   );
-    console.log(response);
   if (response.status == 200) {
     setRecoilStateAsync(ProfileState, {
       data: (response as SuccessResponse)?.data,
@@ -45,7 +48,7 @@ const getMyProfileAsync = async (
       data: (response as SuccessResponse)?.data.id,
     });
 
-    setRecoilStateAsync(RolesState, {   
+    setRecoilStateAsync(RolesState, {
       data: (response as SuccessResponse)?.data.roles,
     });
 
@@ -54,10 +57,12 @@ const getMyProfileAsync = async (
     }, 0);
   }
 
-  else if(response.status == 401){
-    setLoading(false);
-    loggerService.info((response as InvalidModelStateResponse).errors);
-    
+  if (response.status == 202) {
+    let errors = (response as FailureResponse).errors;
+    if (errors != null && errors.length > 0) {
+      notifyError(translator, filterError(errors));
+      setLoading(false);
+    }
   }
 
   if (response.constructor.name == InvalidModelStateResponse.name) {
@@ -81,29 +86,37 @@ const MainLayout = ({ context, translator, ...props }: any) => {
     }
   }, [storage.isAuthenticated]);
 
- 
   const getMyProfile = async () => {
-    await getMyProfileAsync(context, loggerService, setIsLoading);
+    await getMyProfileAsync(translator, context, loggerService, setIsLoading);
   };
 
   useEffect(() => {
     getMyProfile();
   }, []);
 
-
   if (isLoading) {
     return <FullPageLoading isLoading={isLoading} />;
   }
 
-   if(!storage.isAuthenticated){
+  if (!storage.isAuthenticated) {
     return <FullPageLoading isLoading={true} />;
-    }
+  }
 
   return (
     <Layout className={styles.qlhs_main_layout}>
-      <LeftMenu context={context} translator={translator} isHiddenLeftMenu={isHiddenLeftMenu} setIsHiddenLeftMenu={setIsHiddenLeftMenu}  />
+      <LeftMenu
+        context={context}
+        translator={translator}
+        isHiddenLeftMenu={isHiddenLeftMenu}
+        setIsHiddenLeftMenu={setIsHiddenLeftMenu}
+      />
       <Layout className={styles.qlhs_main_content}>
-        <Header context={context} translator={translator} isHidden={isHiddenLeftMenu} setIsHidden={setIsHiddenLeftMenu}  />
+        <Header
+          context={context}
+          translator={translator}
+          isHidden={isHiddenLeftMenu}
+          setIsHidden={setIsHiddenLeftMenu}
+        />
         <Content context={context} translator={translator}>
           {props.children}
         </Content>
