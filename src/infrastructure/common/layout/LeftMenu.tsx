@@ -91,7 +91,7 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
           <Row className={styles.left_menu_profile_wrapper}>
             <Col>
               <img
-                src={baseUrl + myProfileRef?.data.avatar}
+                src={`${baseUrl}/${myProfileRef?.data?.avatar}`}
                 className={styles.left_menu_avatar}
                 alt="Avatar"
               />
