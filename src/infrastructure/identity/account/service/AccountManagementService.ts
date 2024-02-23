@@ -21,7 +21,6 @@ export class AccountManagementService implements IAccountManagementService {
     public async signInWithEmailAsync(endpoint: string, params: any, cookie: Cookie): Promise<RequestResponse> {
         try {
             let result = await new RequestService().makePostRequestAsync(endpoint, params, cookie);
-            console.log(result);
             if(result.status == 200) {
                 this.localStorageService.setStorage(Constant.API_TOKEN_STORAGE, new Cookie(true, (result as SuccessResponse).data.token, (result as SuccessResponse).data.refreshToken));
                 return result as SuccessResponse ;

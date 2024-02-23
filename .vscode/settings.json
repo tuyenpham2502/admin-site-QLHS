@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "tuyenpham.site",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "tuyenpham",
+            "database": "qlhs",
+            "username": "SA",
+            "password": "@Tuyenhai12"
+        }
+    ]
+}

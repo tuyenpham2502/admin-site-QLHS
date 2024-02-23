@@ -1,3 +1,4 @@
+import userImageDefault from "assets/images/user.svg";
 import React, { use, useState } from "react";
 import logo from "assets/images/logo.png";
 import { LogoutOutlined } from "@ant-design/icons";
@@ -19,7 +20,6 @@ import { ProfileState } from "src/core/application/common/atoms/identity/account
 import { AccountManagementService } from "src/infrastructure/identity/account/service/AccountManagementService";
 import Endpoint from "src/core/application/common/Endpoint";
 import { FullPageLoading } from "../components/controls/loading";
-
 const LogoutAsync = async (
   context: any,
   params: any,
@@ -43,6 +43,7 @@ const LogoutAsync = async (
 };
 
 const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }: any) => {
+
   const router = useRouter();
   const [openKeys, setOpenKeys] = useState(context?.openKeys);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +51,7 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
   const root = Constant.MenuConfig.MainMenu;
   const myProfileRef = useRecoilValue<any>(ProfileState);
   const baseUrl = Constant.BaseUrlImage;
-  
+
   const onOpenChange = (keys: any) => {
     const latestOpenKey = keys.find(
       (key: any) => openKeys?.indexOf(key) === -1
@@ -63,7 +64,16 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
   };
 
   const signOut = async () => {
-    await LogoutAsync(context, {}, router, setIsLoading);
+    const {ModalConfirm} = await import("src/infrastructure/common/components/controls/modal");
+    ModalConfirm(
+      "Sign out",
+      "Are you sure you want to sign out?",
+      () => {
+        LogoutAsync(context, {}, router, setIsLoading);
+      },
+      () => { }
+    );
+    
   };
 
   return (
@@ -93,11 +103,21 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
         {myProfileRef && (
           <Row className={styles.left_menu_profile_wrapper}>
             <Col>
+            {
+              myProfileRef.data.avatar ? (
               <img
                 src={`${baseUrl}/${myProfileRef?.data?.avatar}`}
                 className={styles.left_menu_avatar}
                 alt="Avatar"
               />
+              ) : (
+                <Image
+                  src={userImageDefault}
+                  className={styles.left_menu_avatar}
+                  alt="Avatar"
+                />
+              ) 
+            }
             </Col>
             {!collapsed && (
               <>
@@ -167,59 +187,59 @@ const LeftMenu = ({ context, translator, setIsHiddenLeftMenu, isHiddenLeftMenu }
           </MenuUI>
         </div>
       </div>
-        <Layout.Sider
-          width={280}
-        >
+      <Layout.Sider
+        width={280}
+      >
         <MenuUI
-            theme={root.theme}
-            mode={root.mode}
-            defaultSelectedKeys={context?.defaultSelectedKeys}
-            openKeys={openKeys}
-            onOpenChange={onOpenChange}
-          >
-            {root.items?.map((value: any) => {
-              if (value.type === "item") {
-                const item = value as MenuItem;
-                return (
-                  <MenuItemUI
-                    key={item.key}
-                    icon={item.icon}
-                    onClick={() => {
-                      router.push(item.hyperlink);
-                    }}
-                  >
-                    {item.displayText}
-                  </MenuItemUI>
-                );
-              } else if (value.type === "group") {
-                const item = value as GroupedMenuItem;
-                return (
-                  <SubMenuUI
-                    key={item.key}
-                    icon={item.icon}
-                    title={item.displayText}
-                  >
-                    {item.items?.map((sValue: any) => {
-                      const item = sValue as MenuItem;
-                      return (
-                        <MenuItemUI
-                          key={item.key}
-                          icon={item.icon}
-                          onClick={() => {
-                            router.push(item.hyperlink);
-                          }}
-                        >
-                          {item.displayText}
-                        </MenuItemUI>
-                      );
-                    })}
-                  </SubMenuUI>
-                );
-              }
-            })}
-          </MenuUI>
-          </Layout.Sider>
-          <FullPageLoading isLoading={isLoading} />
+          theme={root.theme}
+          mode={root.mode}
+          defaultSelectedKeys={context?.defaultSelectedKeys}
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+        >
+          {root.items?.map((value: any) => {
+            if (value.type === "item") {
+              const item = value as MenuItem;
+              return (
+                <MenuItemUI
+                  key={item.key}
+                  icon={item.icon}
+                  onClick={() => {
+                    router.push(item.hyperlink);
+                  }}
+                >
+                  {item.displayText}
+                </MenuItemUI>
+              );
+            } else if (value.type === "group") {
+              const item = value as GroupedMenuItem;
+              return (
+                <SubMenuUI
+                  key={item.key}
+                  icon={item.icon}
+                  title={item.displayText}
+                >
+                  {item.items?.map((sValue: any) => {
+                    const item = sValue as MenuItem;
+                    return (
+                      <MenuItemUI
+                        key={item.key}
+                        icon={item.icon}
+                        onClick={() => {
+                          router.push(item.hyperlink);
+                        }}
+                      >
+                        {item.displayText}
+                      </MenuItemUI>
+                    );
+                  })}
+                </SubMenuUI>
+              );
+            }
+          })}
+        </MenuUI>
+      </Layout.Sider>
+      <FullPageLoading isLoading={isLoading} />
     </Layout.Sider>
   );
 };

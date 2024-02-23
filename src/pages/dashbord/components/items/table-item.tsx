@@ -7,13 +7,14 @@ type Props = {
   title: string;
   icon?: any;
   onClickReload?: () => void;
+  onClickViewAll?: () => void;
   data?: any;
   type?: string;
   isLoading?: boolean;
 };
 
 const TableItem = (props: Props) => {
-  const { title, icon, onClickReload, data, type, isLoading } = props;
+  const { title, icon, onClickReload, onClickViewAll, data, type, isLoading } = props;
 
   const local = {
     emptyText: (
@@ -45,7 +46,7 @@ const TableItem = (props: Props) => {
               />
             </Col>
             <Col>
-              <Tag color="black" className={styles.table_tag_view_all}>
+              <Tag color="black" className={styles.table_tag_view_all} onClick={onClickViewAll}>
                 View All
               </Tag>
             </Col>
