@@ -1,8 +1,8 @@
-import DashBoardPage from 'src/pages/dashbord/dashboard'
-import MainLayout from 'src/infrastructure/common/layout/MainLayout'
+import DashBoardPage from 'src/pages/dashbord'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { MenuKeys } from 'src/core/domain/enums/MenuKeys'
 import { useTranslation } from 'next-i18next'
+import MainLayout from 'src/infrastructure/common/layout/MainLayout'
 import { NextSeo } from 'next-seo'
 
 export default function Home(context: any) {

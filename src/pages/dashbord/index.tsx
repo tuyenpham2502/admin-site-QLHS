@@ -89,6 +89,7 @@ const DashBoardPage = ({ context }) => {
       <Row gutter={[15, 15]} className={styles.stat_items_wrapper}>
         <Col xxl={12} xl={12} lg={24} md={24} sm={24} xs={24}>
           <TableItem
+            onClickViewAll={() => router.push("/catalog/list")}
             title="Top items"
             icon={<BarChartOutlined className={styles.table_icon} />}
             onClickReload={getTopFilms}
